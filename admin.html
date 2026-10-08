@@ -20,10 +20,9 @@ button{width:100%;padding:13px;border:none;border-radius:8px;font-weight:bold;ma
 <div class="box login">
 <h2>🔐 OG VENDAS - ADMIN</h2>
 <p style="font-size:12px;color:#666">Acesso restrito ao dono</p>
-<p style="font-size:11px;color:red;font-weight:bold">TELA BLOQUEADA</p>
+<p style="font-size:12px;color:red;font-weight:bold">TELA BLOQUEADA</p>
 <input id="senha" type="password" placeholder="Digite a senha secreta" onkeypress="if(event.key==='Enter')entrar()">
 <button class="btn-add" onclick="entrar()">🔓 DESBLOQUEAR</button>
-<p style="font-size:10px;color:#999;margin-top:10px">Senha padrão: OG123</p>
 </div>
 </div>
 
@@ -73,7 +72,7 @@ function entrar(){
     document.getElementById('painel').style.display='block';
     carregar();carregarCupom();
   } else {
-    alert('❌ SENHA ERRADA! Tenta OG123');
+    alert('❌ SENHA ERRADA!');
     document.getElementById('senha').value='';
   }
 }
@@ -81,7 +80,6 @@ function sair(){
   sessionStorage.removeItem('og_logado');
   location.reload();
 }
-// resto do código igual
 const padrao=[{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",tag:"MAIS VENDIDO"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""}];
 let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
 let cupons=JSON.parse(localStorage.getItem('og_cupons')||'null')||[{codigo:"OG10",tipo:"percent",valor:10,min:0},{codigo:"OG20",tipo:"percent",valor:20,min:30000}];
