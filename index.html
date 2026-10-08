@@ -3,69 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OG VENDAS</title>
+<title>OG VENDAS - Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',Arial;background:#f4f6f9}
-header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:4px solid #ffcc00}
-.og{color:#ffffff!important;font-size:38px;font-weight:900;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-.vendas{color:#ffcc00!important;font-size:38px;font-weight:900;letter-spacing:1px}
-.telefone{color:#cbd5e1;font-size:12px;font-weight:700;margin-top:4px}
-#carrinhoBtn{background:#ffcc00;color:#000;border:none;padding:12px 18px;border-radius:30px;font-weight:900;position:relative}
-#qtdCarrinho{position:absolute;top:-8px;right:-6px;background:red;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;border:2px solid #fff}
-.top-faixa{background:#ffcc00;color:#0a2540;text-align:center;font-weight:900;padding:9px;font-size:12px}
-.banner-hero{background:#0a2540;color:#fff;padding:26px 16px;text-align:center}
-.banner-hero h2{font-size:20px;font-weight:900}
-.banner-hero p{color:#ffcc00;font-weight:800;margin-top:8px;font-size:13px;background:rgba(255,204,0,.15);display:inline-block;padding:5px 12px;border-radius:20px}
-.btn-ver-carrinho{background:#25D366;color:#fff;padding:13px 28px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:900;margin-top:14px}
+body{font-family:'Inter',Arial,sans-serif;background:#f4f6f9;color:#0a2540}
+header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:4px solid #ffcc00;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.logo-linha{display:flex;gap:8px;align-items:center}
+.og{color:#FFFFFF!important;font-size:42px;font-weight:900;line-height:1;letter-spacing:1px}
+.vendas{color:#FFCC00!important;font-size:42px;font-weight:900;line-height:1;letter-spacing:1px}
+.telefone{color:#a8b3c5;font-size:12px;font-weight:700;margin-top:4px}
+#carrinhoBtn{background:linear-gradient(#ffde59,#ffcc00);color:#0a2540;border:none;padding:12px 18px;border-radius:30px;font-weight:900;font-size:14px;position:relative;box-shadow:0 4px 15px rgba(255,204,0,.4)}
+#qtdCarrinho{position:absolute;top:-8px;right:-6px;background:#ff3b30;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;border:2px solid #fff}
+.top-faixa{background:linear-gradient(90deg,#ffcc00,#ffde59);color:#0a2540;text-align:center;font-weight:900;padding:10px;font-size:12px}
+.banner-hero{background:radial-gradient(ellipse at top,#12315f,#0a2540);color:#fff;padding:28px 16px;text-align:center}
+.banner-hero h2{font-size:21px;font-weight:900}
+.banner-hero p{color:#ffcc00;font-weight:800;margin-top:10px;font-size:13px;background:rgba(255,204,0,.15);display:inline-block;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,204,0,.25)}
+.btn-ver-carrinho{background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:900;margin-top:16px;box-shadow:0 6px 18px rgba(37,211,102,.35)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px;padding-bottom:90px}
-.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.card img{width:100%;height:155px;object-fit:cover}
-.info{padding:12px 10px 10px}.info h3{font-size:13px;font-weight:800;min-height:36px}.preco{font-weight:900;font-size:15px;margin:8px 0}.btn-add{width:100%;background:#0a2540;color:#fff;border:none;padding:10px;border-radius:12px;font-weight:900}
-.btn-admin{position:fixed;bottom:18px;left:14px;background:#0a2540;color:#ffcc00;padding:9px 16px;border-radius:30px;font-size:11px;font-weight:900;text-decoration:none;border:1px solid #ffcc00;z-index:90}
-#carrinhoModal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;display:none}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.04)}
+.card img{width:100%;height:155px;object-fit:cover;background:#f8f9fb}
+.info{padding:12px 10px 10px}.info h3{font-size:13px;font-weight:800;min-height:36px}.preco{font-weight:900;font-size:15px;margin:8px 0}.btn-add{width:100%;background:#0a2540;color:#fff;border:none;padding:11px;border-radius:12px;font-weight:900;font-size:12px}
+.btn-admin{position:fixed;bottom:18px;left:14px;background:#0a2540;color:#ffcc00;padding:9px 16px;border-radius:30px;font-size:11px;font-weight:900;text-decoration:none;border:1px solid #ffcc00;z-index:90;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+#carrinhoModal{position:fixed;inset:0;background:rgba(6,26,47,.65);backdrop-filter:blur(4px);z-index:999;display:none}
 #carrinhoBox{background:#fff;width:94%;max-width:400px;max-height:90vh;overflow:auto;margin:2% auto;border-radius:20px;padding:18px}
-.itemCart{display:flex;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:12px 0}.itemCart img{width:56px;height:56px;border-radius:12px}
-.qtdBtn{border:1px solid #ccc;background:#fff;padding:4px 10px;border-radius:8px;font-weight:800}
-.btn-final{background:#25D366;color:#fff;width:100%;padding:15px;border:none;border-radius:14px;font-weight:900;margin-top:14px}
+.itemCart{display:flex;gap:10px;align-items:center;border-bottom:1px solid #eef2f7;padding:12px 0}.itemCart img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.qtdBtn{border:1px solid #d0d7e3;background:#fff;padding:4px 10px;border-radius:8px;font-weight:800}
+.btn-final{background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff;width:100%;padding:15px;border:none;border-radius:14px;font-weight:900;margin-top:14px;font-size:15px}
 .cupomBox{background:#fffbe6;border:2px dashed #ffcc00;padding:12px;border-radius:14px;margin:12px 0}
-.cupomBox input{width:68%;padding:10px;border:1px solid #ccc;border-radius:10px}
+.cupomBox input{width:68%;padding:10px;border:1px solid #d0d7e3;border-radius:10px;font-weight:700}
 .cupomBox button{width:30%;padding:10px;background:#0a2540;color:#fff;border:none;border-radius:10px;font-weight:900}
 </style>
 </head>
 <body>
 <header>
 <div>
-<div style="display:flex;gap:6px"><span class="og">OG</span><span class="vendas">VENDAS</span></div>
+<div class="logo-linha"><span class="og">OG</span><span class="vendas">VENDAS</span></div>
 <div class="telefone">📞 950 978 388 • LUANDA</div>
 </div>
-<button id="carrinhoBtn" onclick="abrirCarrinho()">🛒<span id="qtdCarrinho">0</span></button>
+<button id="carrinhoBtn" onclick="abrirCarrinho()">🛒 <span id="qtdCarrinho">0</span></button>
 </header>
-<div class="top-faixa">🎉 CARRINHO LIBERADO - ADICIONA 5 OU + PRODUTOS!</div>
+<div class="top-faixa">🎉 CARRINHO LIBERADO - ADICIONA 5 OU + PRODUTOS E FINALIZA NO ZAP!</div>
 <div class="banner-hero"><h2>OG VENDAS - ENTREGA EM LUANDA</h2><p id="cuponsTxt">Cupons: FRETE</p><br><a class="btn-ver-carrinho" href="#" onclick="abrirCarrinho();return false">🛒 VER CARRINHO</a></div>
 <div id="produtos" class="grid"></div>
-<div id="carrinhoModal" onclick="if(event.target==this)fecharCarrinho()"><div id="carrinhoBox"><h3>🛒 Meu Carrinho</h3><div id="listaCarrinho"></div><div class="cupomBox"><b style="font-size:12px">🎟️ CUPOM</b><div style="display:flex;gap:6px;margin-top:8px"><input id="cupomInput" placeholder="OG10"><button onclick="aplicarCupom()">OK</button></div><p id="cupomMsg" style="font-size:11px;margin-top:6px;font-weight:700"></p></div><div style="border-top:2px solid #0a2540;padding-top:12px"><p>Subtotal: <b id="subtotal">0 Kz</b></p><p style="color:green">Desconto: - <b id="desconto">0 Kz</b></p><p style="font-size:18px">Total: <b id="totalFinal">0 Kz</b></p><p style="font-size:11px"><span id="totalItens">0</span> itens • <span id="freteTxt"></span></p><button class="btn-final" onclick="finalizar()">✅ FINALIZAR NO WHATSAPP</button><button style="width:100%;padding:12px;margin-top:10px;border:1px solid #ccc;background:#fff;border-radius:12px;font-weight:700" onclick="fecharCarrinho()">Continuar</button></div></div></div>
+<div id="carrinhoModal" onclick="if(event.target==this)fecharCarrinho()"><div id="carrinhoBox"><h3 style="font-weight:900">🛒 Meu Carrinho</h3><div id="listaCarrinho" style="margin:14px 0"></div><div class="cupomBox"><b style="font-size:12px">🎟️ TEM CUPOM?</b><div style="display:flex;gap:6px;margin-top:8px"><input id="cupomInput" placeholder="OG10"><button onclick="aplicarCupom()">OK</button></div><p id="cupomMsg" style="font-size:11px;margin-top:6px;font-weight:700"></p></div><div style="border-top:2px solid #0a2540;padding-top:12px"><p>Subtotal: <b id="subtotal">0 Kz</b></p><p style="color:#1ebe5b">Desconto: - <b id="desconto">0 Kz</b></p><p style="font-size:18px;margin-top:6px">Total: <b id="totalFinal">0 Kz</b></p><p style="font-size:11px;color:#667085"><span id="totalItens">0</span> itens • <span id="freteTxt"></span></p><button class="btn-final" onclick="finalizar()">✅ FINALIZAR NO WHATSAPP</button><button style="width:100%;padding:12px;margin-top:10px;border:1px solid #d0d7e3;background:#fff;border-radius:12px;font-weight:700" onclick="fecharCarrinho()">Continuar comprando</button></div></div></div>
 <a href="admin.html" class="btn-admin">⚙️ ADMIN</a>
 <script>
-const padrao=[{name:"Timberland",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400"},{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"}];
+const padrao=[{name:"Timberland",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400"},{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},{name:"Coluna JBL Mini",preco:"9.500 Kz",valor:9500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"TV Box 4K",preco:"22.000 Kz",valor:22000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400"},{name:"Ring Light Tripé",preco:"13.500 Kz",valor:13500,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400"},{name:"Lâmpada RGB",preco:"5.500 Kz",valor:5500,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"}];
 const cupomPadrao=[{codigo:"OG10",tipo:"percent",valor:10,min:0},{codigo:"OG20",tipo:"percent",valor:20,min:30000},{codigo:"FRETE",tipo:"frete",valor:0,min:0}];
 let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
 let carrinho=JSON.parse(localStorage.getItem('og_carrinho')||'[]');
 let cupons=JSON.parse(localStorage.getItem('og_cupons')||'null')||cupomPadrao;
 let descontoValor=0,cupomAtivo='',freteGratis=false;
 function render(){document.getElementById('produtos').innerHTML=produtos.map((p,i)=>`<div class="card"><img src="${p.img}"><div class="info"><h3>${p.name}</h3><div class="preco">${p.preco}</div><button id="btn${i}" class="btn-add" onclick="addCarrinho(${i})">+ CARRINHO</button></div></div>`).join('');document.getElementById('cuponsTxt').innerText='Cupons: '+cupons.map(c=>c.codigo).join(' • ');atualizaQtd();}
-function addCarrinho(i){let prod=produtos[i];let ex=carrinho.find(c=>c.name==prod.name);if(ex){ex.qtd++}else{carrinho.push({...prod,qtd:1})}salvar();let btn=document.getElementById('btn'+i);btn.innerText='✅';setTimeout(()=>btn.innerText='+ CARRINHO',800);}
+function addCarrinho(i){let prod=produtos[i];let ex=carrinho.find(c=>c.name==prod.name);if(ex){ex.qtd++}else{carrinho.push({...prod,qtd:1})}salvar();let btn=document.getElementById('btn'+i);btn.innerText='✅ ADICIONADO';setTimeout(()=>btn.innerText='+ CARRINHO',900);}
 function salvar(){localStorage.setItem('og_carrinho',JSON.stringify(carrinho));atualizaQtd();calcTotal();}
 function atualizaQtd(){let t=carrinho.reduce((s,c)=>s+c.qtd,0);document.getElementById('qtdCarrinho').innerText=t;document.getElementById('totalItens').innerText=t;}
 function abrirCarrinho(){renderCarrinho();calcTotal();document.getElementById('carrinhoModal').style.display='block';}
 function fecharCarrinho(){document.getElementById('carrinhoModal').style.display='none'}
-function renderCarrinho(){if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px">Vazio</p>';return}document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>`<div class="itemCart"><img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br>${c.preco}</div><div><button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button> ${c.qtd} <button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button> <button style="border:none;background:none;color:red" onclick="remove(${i})">✕</button></div></div>`).join('');}
+function renderCarrinho(){if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px">Vazio - adiciona 5 produtos!</p>';return}document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>`<div class="itemCart"><img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br><span style="font-size:12px;font-weight:800">${c.preco}</span></div><div><button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button> ${c.qtd} <button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button> <button style="border:none;background:none;color:red;font-weight:900" onclick="remove(${i})">✕</button></div></div>`).join('');}
 function mudaQtd(i,d){carrinho[i].qtd+=d;if(carrinho[i].qtd<=0)carrinho.splice(i,1);salvar();renderCarrinho();}
 function remove(i){carrinho.splice(i,1);salvar();renderCarrinho();}
 function calcTotal(){let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;if(total<0)total=0;document.getElementById('subtotal').innerText=sub.toLocaleString()+' Kz';document.getElementById('desconto').innerText=descontoValor.toLocaleString()+' Kz';document.getElementById('totalFinal').innerText=total.toLocaleString()+' Kz';document.getElementById('freteTxt').innerText=freteGratis?'Frete Grátis':'Frete 2.000 Kz';}
 function aplicarCupom(){let cup=document.getElementById('cupomInput').value.trim().toUpperCase();let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let achado=cupons.find(c=>c.codigo==cup);let msg=document.getElementById('cupomMsg');descontoValor=0;freteGratis=false;cupomAtivo='';if(!achado){msg.innerText='❌ Inválido';msg.style.color='red';calcTotal();return}if(sub<(achado.min||0)){msg.innerText='Mínimo '+achado.min+' Kz';msg.style.color='red';calcTotal();return}if(achado.tipo=='percent'){descontoValor=Math.round(sub*achado.valor/100);cupomAtivo=achado.codigo;msg.innerText='✅ '+achado.valor+'% OFF';msg.style.color='green';}else if(achado.tipo=='valor'){descontoValor=achado.valor;cupomAtivo=achado.codigo;msg.innerText='✅ -'+achado.valor+' Kz';msg.style.color='green';}else{freteGratis=true;cupomAtivo=achado.codigo;msg.innerText='✅ Frete Grátis';msg.style.color='green';}calcTotal();}
-function finalizar(){if(carrinho.length==0)return alert('Vazio');let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;let txt='Olá OG VENDAS! Pedido:\n\n';carrinho.forEach(c=>{txt+=c.qtd+'x '+c.name+' - '+c.preco+'\n'});txt+='\nSubtotal: '+sub+' Kz\n';if(cupomAtivo)txt+='Cupom '+cupomAtivo+': -'+descontoValor+' Kz\n';txt+='TOTAL: '+total+' Kz\n';window.open('https://wa.me/244950978388?text='+encodeURIComponent(txt));}
+function finalizar(){if(carrinho.length==0)return alert('Vazio');let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;let txt='Olá OG VENDAS! Pedido:\n\n';carrinho.forEach(c=>{txt+=c.qtd+'x '+c.name+' - '+c.preco+'\n'});txt+='\nSubtotal: '+sub+' Kz\n';if(cupomAtivo)txt+='Cupom '+cupomAtivo+': -'+descontoValor+' Kz\n';txt+='TOTAL: '+total+' Kz\nItens: '+carrinho.reduce((s,c)=>s+c.qtd,0);window.open('https://wa.me/244950978388?text='+encodeURIComponent(txt));}
 render();calcTotal();
 </script>
 </body>
