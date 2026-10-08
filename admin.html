@@ -1,98 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin OG</title>
+<html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin OG VENDAS - Bloqueado</title>
 <style>
-*{box-sizing:border-box}body{font-family:Arial;background:#f0f2f5;padding:12px;margin:0}
-.box{background:#fff;padding:16px;border-radius:14px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-input{width:100%;padding:13px;margin:7px 0;border:1px solid #ccc;border-radius:10px;font-size:15px}
-button{width:100%;padding:13px;border:none;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer}
-.btn{background:#0a2540;color:#fff}
-.btn-yellow{background:#ffcc00;color:#000;border:2px dashed #000;margin-top:8px}
-.btn-red{background:#ff3b30;color:#fff;width:auto;padding:6px 12px;border-radius:8px}
-#preview{width:100%;max-height:220px;object-fit:contain;display:none;margin-top:10px;border-radius:12px;border:1px solid #eee}
-.file-real{width:100%;padding:12px;background:#fffbe6;border:2px solid #ffcc00;border-radius:12px;margin:10px 0}
+body{font-family:Arial;background:#0a2540;padding:12px;margin:0}
+.box{background:#fff;padding:18px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.2);margin-bottom:15px}
+input,select{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+button{width:100%;padding:13px;border:none;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer}
+.btn-add{background:#0a2540;color:#fff}.btn-galeria{background:#ffcc00;color:#000;border:2px dashed #0a2540}
+.btn-del{background:#ff3b30;color:#fff;padding:6px;width:auto}.btn-sair{background:#666;color:#fff}
+.login{max-width:400px;margin:80px auto;text-align:center;border:3px solid #ffcc00}
+#preview{width:100%;max-height:200px;object-fit:contain;margin-top:8px;border-radius:8px;display:none}
+.tab{display:flex;gap:6px;margin-bottom:10px}.tab button{flex:1;padding:10px;background:#ddd;color:#000}
+.tab button.ativo{background:#0a2540;color:#fff}
+.bloqueio{position:fixed;top:0;left:0;right:0;bottom:0;background:#0a2540;z-index:9999;display:flex;align-items:center;justify-content:center}
 </style>
-</head>
-<body>
+</head><body>
 
-<div id="telaLogin" class="box" style="max-width:420px;margin:50px auto;text-align:center">
-<h2>🔐 Admin OG VENDAS</h2>
-<p style="color:#667085">Acesso restrito</p>
-<input id="senhaInput" type="password" placeholder="Senha secreta (OG123)">
-<button class="btn" onclick="fazerLogin()">ENTRAR</button>
-<br><br>
-<a href="index.html" style="color:#0a2540;font-weight:900;text-decoration:none">🏠 VER LOJA</a>
+<div id="bloqueio" class="bloqueio">
+<div class="box login">
+<h2>🔐 OG VENDAS - ADMIN</h2>
+<p style="font-size:12px;color:#666">Acesso restrito ao dono</p>
+<p style="font-size:11px;color:red;font-weight:bold">TELA BLOQUEADA</p>
+<input id="senha" type="password" placeholder="Digite a senha secreta" onkeypress="if(event.key==='Enter')entrar()">
+<button class="btn-add" onclick="entrar()">🔓 DESBLOQUEAR</button>
+<p style="font-size:10px;color:#999;margin-top:10px">Senha padrão: OG123</p>
+</div>
 </div>
 
-<div id="telaPainel" style="display:none;max-width:500px;margin:auto">
-<div class="box">
-<h3>➕ Adicionar Produto</h3>
-<input id="nome" placeholder="Nome ex: Timberland">
-<input id="preco" placeholder="Preço texto ex: 11.500 Kz">
-<input id="valor" type="number" placeholder="Valor número ex: 11500">
-
-<label style="font-weight:900;font-size:13px;margin-top:10px;display:block">📸 FOTO DO PRODUTO:</label>
-<input class="file-real" type="file" id="foto" accept="image/*" onchange="fotoLida(this)">
-
-<img id="preview">
-<input id="imgBase64" type="hidden">
-
-<button class="btn" style="margin-top:12px" onclick="salvarProduto()">✅ ADICIONAR NA LOJA</button>
-<p style="font-size:11px;color:#667085;margin-top:8px;text-align:center">Se não abrir galeria, desinstala o app TakeNow que está bloqueando teu celular</p>
+<div id="painel" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;padding:10px 15px;border-radius:10px;margin-bottom:10px">
+<b style="color:#0a2540">✅ Logado - OG VENDAS</b>
+<button onclick="sair()" style="width:auto;padding:6px 15px" class="btn-sair">Sair 🔒</button>
 </div>
 
-<div class="box">
-<h3>Produtos (<span id="qtd">0</span>)</h3>
-<div id="lista"></div>
-<br>
-<a href="index.html" target="_blank" style="display:block;background:#25D366;color:#fff;text-align:center;padding:15px;border-radius:12px;text-decoration:none;font-weight:900">👁️ VER LOJA AGORA</a>
-<br>
-<button onclick="sair()" style="background:#eee;color:#000">Sair</button>
+<div class="tab"><button id="tabProd" class="ativo" onclick="aba('prod')">📦 Produtos</button><button id="tabCupom" onclick="aba('cupom')">🎟️ Cupons</button></div>
+
+<div id="abaProd">
+<div class="box"><h3>Adicionar Produto</h3><input id="nome" placeholder="Nome"><input id="preco" placeholder="Preço ex: 15.000 Kz"><input id="valor" type="number" placeholder="Valor ex: 15000">
+<button class="btn-galeria" onclick="document.getElementById('fotoInput').click()">📸 ESCOLHER FOTO DA GALERIA</button>
+<input type="file" id="fotoInput" accept="image/*" style="display:none" onchange="lerFoto(this)"><img id="preview"><input id="img" type="hidden">
+<button class="btn-add" onclick="add()">✅ ADICIONAR NA LOJA</button></div>
+<div class="box"><h3>Produtos (<span id="qtd"></span>)</h3><div id="lista"></div>
+<a href="https://lucas-32127.github.io/og-vendas/" style="display:block;background:#25D366;color:white;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:15px">👁️ VER LOJA OFICIAL</a>
 </div>
+</div>
+
+<div id="abaCupom" style="display:none">
+<div class="box"><h3>Criar Cupom</h3><input id="cupomCodigo" placeholder="Código ex: NATAL50"><select id="cupomTipo"><option value="percent">% OFF</option><option value="valor">Valor fixo Kz OFF</option><option value="frete">Frete Grátis</option></select><input id="cupomValor" type="number" placeholder="Valor ex: 10"><input id="cupomMin" type="number" placeholder="Mínimo ex: 0"><button class="btn-add" onclick="addCupom()">🎟️ CRIAR CUPOM</button></div>
+<div class="box"><h3>Cupons (<span id="qtdCupom"></span>)</h3><div id="listaCupom"></div></div>
+</div>
+
 </div>
 
 <script>
-const SENHA="OG123";
-const padrao=[{name:"Timberland",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400"},{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},{name:"Coluna JBL Mini",preco:"9.500 Kz",valor:9500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"TV Box 4K",preco:"22.000 Kz",valor:22000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400"},{name:"Ring Light Tripé",preco:"13.500 Kz",valor:13500,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400"},{name:"Lâmpada RGB",preco:"5.500 Kz",valor:5500,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"}];
-
-function verificarLogin(){if(localStorage.getItem('og_logado')==='sim'){document.getElementById('telaLogin').style.display='none';document.getElementById('telaPainel').style.display='block';carregar();}}
-function fazerLogin(){let s=document.getElementById('senhaInput').value;if(s===SENHA){localStorage.setItem('og_logado','sim');document.getElementById('telaLogin').style.display='none';document.getElementById('telaPainel').style.display='block';carregar();}else alert('Senha errada! É OG123');}
-function sair(){localStorage.removeItem('og_logado');location.reload();}
+const SENHA_SECRETA="OG123";
+function verificarBloqueio(){
+  let logado=sessionStorage.getItem('og_logado');
+  if(logado==="sim"){
+    document.getElementById('bloqueio').style.display='none';
+    document.getElementById('painel').style.display='block';
+    carregar();carregarCupom();
+  } else {
+    document.getElementById('bloqueio').style.display='flex';
+    document.getElementById('painel').style.display='none';
+  }
+}
+function entrar(){
+  let s=document.getElementById('senha').value;
+  if(s===SENHA_SECRETA){
+    sessionStorage.setItem('og_logado','sim');
+    document.getElementById('bloqueio').style.display='none';
+    document.getElementById('painel').style.display='block';
+    carregar();carregarCupom();
+  } else {
+    alert('❌ SENHA ERRADA! Tenta OG123');
+    document.getElementById('senha').value='';
+  }
+}
+function sair(){
+  sessionStorage.removeItem('og_logado');
+  location.reload();
+}
+// resto do código igual
+const padrao=[{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",tag:"MAIS VENDIDO"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""}];
 let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
-function fotoLida(input){
- if(input.files && input.files[0]){
-  if(input.files[0].size>3000000){alert('Foto muito grande! Escolhe uma menor');return}
-  let r=new FileReader();
-  r.onload=e=>{
-   document.getElementById('imgBase64').value=e.target.result;
-   document.getElementById('preview').src=e.target.result;
-   document.getElementById('preview').style.display='block';
-  };
-  r.readAsDataURL(input.files[0]);
- }
-}
-function salvarTodos(){localStorage.setItem('og_produtos',JSON.stringify(produtos));carregar();}
-function carregar(){
- document.getElementById('qtd').innerText=produtos.length;
- document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:10px 0"><img src="${p.img}" style="width:54px;height:54px;object-fit:cover;border-radius:10px"><div style="flex:1"><b style="font-size:13px">${p.name}</b><br><span style="font-size:12px;font-weight:700">${p.preco}</span></div><button class="btn-red" onclick="apagar(${i})">X</button></div>`).join('');
-}
-function salvarProduto(){
- let n=document.getElementById('nome').value.trim();
- let p=document.getElementById('preco').value.trim();
- let v=parseInt(document.getElementById('valor').value)||0;
- let i=document.getElementById('imgBase64').value;
- if(!n||!p||!v)return alert('Preencha nome, preço e valor número');
- if(!i)return alert('Escolhe a foto! Clica em "Escolher arquivo"');
- produtos.unshift({name:n,preco:p,valor:v,img:i});
- document.getElementById('nome').value='';document.getElementById('preco').value='';document.getElementById('valor').value='';document.getElementById('imgBase64').value='';document.getElementById('preview').style.display='none';document.getElementById('foto').value='';
- salvarTodos();
- alert('✅ Adicionado! Agora tem '+produtos.length+' produtos na loja');
-}
-function apagar(i){if(confirm('Apagar este produto?')){produtos.splice(i,1);salvarTodos();}}
-verificarLogin();
-</script>
-</body>
-</html>
+let cupons=JSON.parse(localStorage.getItem('og_cupons')||'null')||[{codigo:"OG10",tipo:"percent",valor:10,min:0},{codigo:"OG20",tipo:"percent",valor:20,min:30000}];
+function aba(t){document.getElementById('abaProd').style.display=t=='prod'?'block':'none';document.getElementById('abaCupom').style.display=t=='cupom'?'block':'none';document.getElementById('tabProd').classList.toggle('ativo',t=='prod');document.getElementById('tabCupom').classList.toggle('ativo',t=='cupom')}
+function lerFoto(input){if(input.files&&input.files[0]){let r=new FileReader();r.onload=e=>{document.getElementById('img').value=e.target.result;document.getElementById('preview').src=e.target.result;document.getElementById('preview').style.display='block'};r.readAsDataURL(input.files[0])}}
+function salvar(){localStorage.setItem('og_produtos',JSON.stringify(produtos));carregar()}
+function carregar(){document.getElementById('qtd').innerText=produtos.length;document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;border-bottom:1px solid #eee;padding-bottom:8px"><img src="${p.img}" style="width:50px;height:50px;object-fit:cover;border-radius:8px"><div style="flex:1"><b style="font-size:12px">${p.name}</b><br>${p.preco}</div><button class="btn-del" onclick="del(${i})">X</button></div>`).join('')}
+function add(){let n=document.getElementById('nome').value,p=document.getElementById('preco').value,v=parseInt(document.getElementById('valor').value)||0,i=document.getElementById('img').value;if(!n||!p||!i||!v)return alert('Preencha tudo');produtos.unshift({name:n,preco:p,valor:v,img:i,tag:''});document.getElementById('nome').value=document.getElementById('preco').value=document.getElementById('valor').value=document.getElementById('img').value='';document.getElementById('preview').style.display='none';salvar()}
+function del(i){if(confirm('Apagar?')){produtos.splice(i,1);salvar()}}
+function salvarCupom(){localStorage.setItem('og_cupons',JSON.stringify(cupons));carregarCupom()}
+function carregarCupom(){document.getElementById('qtdCupom').innerText=cupons.length;document.getElementById('listaCupom').innerHTML=cupons.map((c,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:8px 0"><div><b>${c.codigo}</b><br><span style="font-size:11px">${c.tipo=='percent'?c.valor+'% OFF':c.tipo=='valor'?c.valor+' Kz OFF':'Frete Grátis'}</span></div><button class="btn-del" onclick="delCupom(${i})">X</button></div>`).join('')}
+function addCupom(){let cod=document.getElementById('cupomCodigo').value.trim().toUpperCase();let tipo=document.getElementById('cupomTipo').value;let val=parseInt(document.getElementById('cupomValor').value)||0;let min=parseInt(document.getElementById('cupomMin').value)||0;if(!cod)return alert('Digite código');if(cupons.find(c=>c.codigo==cod))return alert('Já existe');cupons.push({codigo:cod,tipo,valor:val,min});document.getElementById('cupomCodigo').value=document.getElementById('cupomValor').value=document.getElementById('cupomMin').value='';salvarCupom()}
+function delCupom(i){if(confirm('Apagar cupom?')){cupons.splice(i,1);salvarCupom()}}
+verificarBloqueio();
+</script></body></html>
