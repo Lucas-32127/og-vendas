@@ -3,67 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OG VENDAS - Loja Oficial Angola</title>
+<title>OG VENDAS - Loja Oficial</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial, sans-serif;background:#f0f2f5}
-header{background:#0a2540;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:10}
+body{font-family:Arial;background:#f0f2f5}
+header{background:#0a2540;color:#fff;padding:14px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
 header span{color:#ffcc00}
-.top{background:#ffcc00;text-align:center;font-weight:bold;padding:7px;font-size:12px}
-.banner{background:#0a2540;color:#fff;padding:28px 15px;text-align:center}
-.btn-zap{background:#25D366;color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:bold;margin-top:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+#carrinhoBtn{background:#ffcc00;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;position:relative}
+#carrinhoBtn span{background:red;color:white;border-radius:50%;padding:2px 6px;font-size:11px;position:absolute;top:-6px;right:-6px}
+.top{background:#ffcc00;text-align:center;font-weight:bold;padding:6px;font-size:11px}
+.banner{background:#0a2540;color:#fff;padding:22px 15px;text-align:center}
+.btn-zap{background:#25D366;color:#fff;padding:12px 24px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:bold;margin-top:10px;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;padding-bottom:80px}
 .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1);position:relative}
-.card img{width:100%;height:145px;object-fit:cover}
-.info{padding:10px}
-.info h3{font-size:13px;min-height:32px}
-.preco{color:#0a2540;font-weight:bold;font-size:15px;margin:6px 0}
-.btn-comprar{width:100%;background:#0a2540;color:#fff;border:none;padding:9px;border-radius:8px;font-weight:bold;font-size:13px}
-.rodape{background:#0a2540;color:white;text-align:center;padding:20px;margin-top:20px;font-size:12px}
-.tag{background:red;color:white;font-size:9px;padding:2px 6px;border-radius:4px;position:absolute;margin:6px;z-index:2}
-.btn-admin{position:fixed;bottom:15px;right:15px;background:#ffcc00;color:#000;padding:13px 20px;border-radius:30px;font-weight:bold;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:999;border:2px solid #0a2540;font-size:14px}
+.card img{width:100%;height:135px;object-fit:cover}
+.info{padding:8px}
+.info h3{font-size:12px;min-height:30px}
+.preco{color:#0a2540;font-weight:bold;font-size:14px;margin:4px 0}
+.btn-add{width:100%;background:#0a2540;color:#fff;border:none;padding:8px;border-radius:8px;font-weight:bold;font-size:12px;margin-top:4px}
+.btn-add.added{background:#25D366}
+.tag{background:red;color:white;font-size:8px;padding:2px 5px;border-radius:4px;position:absolute;margin:5px;z-index:2}
+
+/* CARRINHO */
+#carrinhoModal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;display:none}
+#carrinhoBox{background:#fff;width:92%;max-width:380px;max-height:85vh;overflow:auto;margin:5% auto;border-radius:16px;padding:15px}
+.itemCart{display:flex;gap:8px;align-items:center;border-bottom:1px solid #eee;padding:8px 0}
+.itemCart img{width:50px;height:50px;object-fit:cover;border-radius:8px}
+.qtdBtn{border:1px solid #ccc;background:#fff;padding:3px 8px;border-radius:6px;font-weight:bold}
+.btn-final{background:#25D366;color:#fff;width:100%;padding:14px;border:none;border-radius:10px;font-weight:bold;font-size:15px;margin-top:12px}
+.btn-admin{position:fixed;bottom:15px;left:15px;background:#ffcc00;color:#000;padding:10px 16px;border-radius:30px;font-weight:bold;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:90;border:2px solid #0a2540;font-size:12px}
+.rodape{background:#0a2540;color:white;text-align:center;padding:15px;font-size:11px}
 </style>
 </head>
 <body>
-<header><h1>OG <span>VENDAS</span></h1><p>Entrega em Luanda - 950 978 388</p></header>
+<header>
+<div><h2 style="font-size:18px">OG <span>VENDAS</span></h2><p style="font-size:10px">950 978 388</p></div>
+<button id="carrinhoBtn" onclick="abrirCarrinho()">🛒 Carrinho <span id="qtdCarrinho">0</span></button>
+</header>
+
 <div class="top">🚚 ENTREGA RÁPIDA EM LUANDA | PAGAMENTO NA ENTREGA</div>
-<div class="banner">
-<h2>Os mais vendidos de Angola</h2>
-<p>Preço baixo e entrega hoje</p>
-<a class="btn-zap" href="https://wa.me/244950978388?text=Ola%20OG%20VENDAS%20quero%20comprar">📲 COMPRAR NO WHATSAPP</a>
-</div>
+<div class="banner"><h3 style="font-size:16px">Escolhe 5+ produtos e paga na entrega!</h3><a class="btn-zap" href="#" onclick="abrirCarrinho();return false;">🛒 VER MEU CARRINHO</a></div>
 
 <div id="produtos" class="grid"></div>
 
-<a href="admin.html" class="btn-admin">⚙️ ADMIN</a>
+<!-- MODAL CARRINHO -->
+<div id="carrinhoModal" onclick="if(event.target==this)fecharCarrinho()">
+<div id="carrinhoBox">
+<h3>🛒 Meu Carrinho</h3>
+<div id="listaCarrinho" style="margin:12px 0"></div>
+<div style="border-top:2px solid #0a2540;padding-top:10px">
+<p><b>Total de itens: <span id="totalItens">0</span></b></p>
+<p style="font-size:12px;color:#666;margin:6px 0">Frete grátis em Luanda acima de 30.000 Kz</p>
+<button class="btn-final" onclick="finalizar()">✅ FINALIZAR NO WHATSAPP</button>
+<button style="width:100%;padding:10px;margin-top:8px;border:1px solid #ccc;background:#fff;border-radius:10px" onclick="fecharCarrinho()">Continuar comprando</button>
+<button style="width:100%;padding:8px;margin-top:8px;border:none;background:transparent;color:red;font-size:12px" onclick="limparCarrinho()">🗑️ Limpar carrinho</button>
+</div>
+</div>
+</div>
 
-<div class="rodape">OG VENDAS ONLINE<br>📍 Luanda - Angola<br>📲 WhatsApp: 950 978 388<br>Pagamento na Entrega</div>
+<a href="admin.html" class="btn-admin">⚙️ ADMIN</a>
+<div class="rodape">OG VENDAS - Luanda Angola<br>WhatsApp 950 978 388</div>
 
 <script>
 const padrao=[
-{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",tag:"MAIS VENDIDO"},
-{name:"Fone Bluetooth M10",preco:"8.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},
-{name:"Power Bank 20.000mAh",preco:"12.000 Kz",img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400",tag:""},
-{name:"Coluna JBL Mini Go3",preco:"9.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},
-{name:"TV Box 4K Android",preco:"22.000 Kz",img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400",tag:""},
-{name:"Tripé + Luz Ring Light",preco:"13.500 Kz",img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400",tag:""},
-{name:"Lâmpada LED RGB + Controle",preco:"5.500 Kz",img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400",tag:""},
-{name:"Microfone Lapela Sem Fio",preco:"14.000 Kz",img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400",tag:"NOVO"}
+{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",tag:"MAIS VENDIDO"},
+{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},
+{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400",tag:""},
+{name:"Coluna JBL Mini",preco:"9.500 Kz",valor:9500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},
+{name:"TV Box 4K",preco:"22.000 Kz",valor:22000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400",tag:""},
+{name:"Ring Light Tripé",preco:"13.500 Kz",valor:13500,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400",tag:""},
+{name:"Lâmpada RGB",preco:"5.500 Kz",valor:5500,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400",tag:""},
+{name:"Microfone Lapela",preco:"14.000 Kz",valor:14000,img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400",tag:"NOVO"}
 ];
 
-let produtos = JSON.parse(localStorage.getItem('og_produtos')||'null') || padrao;
+let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
+let carrinho=JSON.parse(localStorage.getItem('og_carrinho')||'[]');
 
 function render(){
-  document.getElementById('produtos').innerHTML = produtos.map(p=>`
-  <div class="card">
-    ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
-    <img src="${p.img}">
-    <div class="info">
-      <h3>${p.name}</h3>
-      <div class="preco">${p.preco}</div>
-      <button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20${encodeURIComponent(p.name)}%20por%20${encodeURIComponent(p.preco)}')">COMPRAR</button>
-    </div>
-  </div>`).join('');
+ document.getElementById('produtos').innerHTML=produtos.map((p,i)=>`
+ <div class="card">
+ ${p.tag?`<span class="tag">${p.tag}</span>`:''}
+ <img src="${p.img}">
+ <div class="info"><h3>${p.name}</h3><div class="preco">${p.preco}</div>
+ <button id="btn${i}" class="btn-add" onclick="addCarrinho(${i})">+ CARRINHO</button>
+ </div></div>`).join('');
+ atualizaQtd();
+}
+function addCarrinho(i){
+ let prod=produtos[i];
+ let existe=carrinho.find(c=>c.name==prod.name);
+ if(existe){existe.qtd++}else{carrinho.push({...prod,qtd:1})}
+ localStorage.setItem('og_carrinho',JSON.stringify(carrinho));
+ atualizaQtd();
+ let btn=document.getElementById('btn'+i);
+ btn.innerText='✅ ADICIONADO';
+ btn.classList.add('added');
+ setTimeout(()=>{btn.innerText='+ CARRINHO';btn.classList.remove('added')},1200);
+}
+function atualizaQtd(){
+ let total=carrinho.reduce((s,c)=>s+c.qtd,0);
+ document.getElementById('qtdCarrinho').innerText=total;
+ document.getElementById('totalItens').innerText=total;
+}
+function abrirCarrinho(){
+ renderCarrinho();
+ document.getElementById('carrinhoModal').style.display='block';
+}
+function fecharCarrinho(){document.getElementById('carrinhoModal').style.display='none'}
+function renderCarrinho(){
+ if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px;color:#888">Carrinho vazio. Adiciona 5 produtos!</p>';return}
+ document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>`
+ <div class="itemCart">
+ <img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br><span style="font-size:12px">${c.preco}</span></div>
+ <div style="display:flex;gap:4px;align-items:center">
+ <button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button><b>${c.qtd}</b><button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button>
+ <button style="border:none;background:transparent;color:red;margin-left:6px" onclick="remove(${i})">✕</button>
+ </div></div>`).join('');
+}
+function mudaQtd(i,d){
+ carrinho[i].qtd+=d;
+ if(carrinho[i].qtd<=0)carrinho.splice(i,1);
+ localStorage.setItem('og_carrinho',JSON.stringify(carrinho));
+ renderCarrinho();atualizaQtd();
+}
+function remove(i){carrinho.splice(i,1);localStorage.setItem('og_carrinho',JSON.stringify(carrinho));renderCarrinho();atualizaQtd();}
+function limparCarrinho(){if(confirm('Limpar tudo?')){carrinho=[];localStorage.setItem('og_carrinho','[]');renderCarrinho();atualizaQtd();}}
+function finalizar(){
+ if(carrinho.length==0)return alert('Carrinho vazio!');
+ let msg='Ola OG VENDAS! Quero comprar:\n\n';
+ let total=0;
+ carrinho.forEach(c=>{msg+=`• ${c.qtd}x ${c.name} - ${c.preco}\n`;total+= (c.valor||0)*c.qtd});
+ msg+=`\nTotal de itens: ${carrinho.reduce((s,c)=>s+c.qtd,0)}\n`;
+ msg+=`Valor estimado: ${total.toLocaleString()} Kz\n\nEntrega em Luanda?`;
+ window.open('https://wa.me/244950978388?text='+encodeURIComponent(msg));
 }
 render();
 </script>
