@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin OG VENDAS</title>
-<style>body{font-family:Arial;background:#f0f2f5;padding:12px}.box{background:#fff;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:15px}input,select{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:8px}button{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer}.btn-add{background:#0a2540;color:#fff}.btn-galeria{background:#ffcc00;color:#000;border:2px dashed #0a2540}.btn-del{background:#ff3b30;color:#fff;padding:6px;width:auto}.login{max-width:400px;margin:40px auto;text-align:center}#preview{width:100%;max-height:200px;object-fit:contain;margin-top:8px;border-radius:8px;display:none}.tab{display:flex;gap:6px;margin-bottom:10px}.tab button{flex:1;padding:10px;background:#ddd;color:#000}.tab button.ativo{background:#0a2540;color:#fff}</style>
-</head><body>
-<div id="login" class="box login"><h2>🔐 Admin OG VENDAS</h2><p style="font-size:12px;color:#666">Acesso restrito</p><input id="senha" type="password" placeholder="Senha secreta"><button class="btn-add" onclick="entrar()">ENTRAR</button></div>
-
-<div id="painel" style="display:none">
-<div class="tab"><button id="tabProd" class="ativo" onclick="aba('prod')">📦 Produtos</button><button id="tabCupom" onclick="aba('cupom')">🎟️ Cupons</button></div>
-
-<div id="abaProd">
-<div class="box"><h3>Adicionar Produto</h3><input id="nome" placeholder="Nome"><input id="preco" placeholder="Preço ex: 15.000 Kz"><input id="valor" type="number" placeholder="Valor ex: 15000"><button class="btn-galeria" onclick="document.getElementById('fotoInput').click()">📸 ESCOLHER FOTO DA GALERIA</button><input type="file" id="fotoInput" accept="image/*" style="display:none" onchange="lerFoto(this)"><img id="preview"><input id="img" type="hidden"><button class="btn-add" onclick="add()">✅ ADICIONAR NA LOJA</button></div>
-<div class="box"><h3>Produtos (<span id="qtd"></span>)</h3><div id="lista"></div>
-<a href="https://lucas-32127.github.io/og-vendas/" style="display:block;background:#25D366;color:white;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:15px">👁️ VER MINHA LOJA - LINK COMPLETO</a>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin</title>
+<style>body{font-family:Arial;padding:15px;background:#f0f2f5}.box{background:#fff;padding:15px;border-radius:12px;margin-bottom:12px}input{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:8px}button{width:100%;padding:12px;background:#0a2540;color:#fff;border:none;border-radius:8px;font-weight:bold}</style></head><body>
+<div id="login" class="box"><h3>Admin OG</h3><input id="s" type="password" placeholder="Senha"><button onclick="if(document.getElementById('s').value=='OG123'){document.getElementById('login').style.display='none';document.getElementById('p').style.display='block'}else alert('errada')">Entrar</button>
+<br><br><a href="https://lucas-32127.github.io/og-vendas/">🏠 IR PARA LOJA - LINK DIRETO</a>
 </div>
+<div id="p" style="display:none">
+<div class="box"><h3>Link da loja</h3>
+<p>Clica aqui em baixo:</p>
+<a href="https://lucas-32127.github.io/og-vendas/" style="display:block;background:#25D366;color:#fff;padding:15px;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold;font-size:18px">👉 VER LOJA AGORA 👈</a>
 </div>
-
-<div id="abaCupom" style="display:none">
-<div class="box"><h3>Criar Cupom</h3><input id="cupomCodigo" placeholder="Código ex: NATAL50"><select id="cupomTipo"><option value="percent">% OFF</option><option value="valor">Valor fixo Kz OFF</option><option value="frete">Frete Grátis</option></select><input id="cupomValor" type="number" placeholder="Valor ex: 10"><input id="cupomMin" type="number" placeholder="Mínimo ex: 0"><button class="btn-add" onclick="addCupom()">🎟️ CRIAR CUPOM</button></div>
-<div class="box"><h3>Cupons (<span id="qtdCupom"></span>)</h3><div id="listaCupom"></div>
-<a href="https://lucas-32127.github.io/og-vendas/" style="display:block;background:#0a2540;color:white;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:15px">🏠 VOLTAR PARA LOJA OFICIAL</a>
+<div class="box" id="area"></div>
 </div>
-</div>
-
-</div>
-
 <script>
-const SENHA_SECRETA = "OG123";
-const padrao=[{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",tag:"MAIS VENDIDO"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400",tag:""},{name:"Coluna JBL Mini",preco:"9.500 Kz",valor:9500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400",tag:""},{name:"TV Box 4K",preco:"22.000 Kz",valor:22000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400",tag:""},{name:"Ring Light Tripé",preco:"13.500 Kz",valor:13500,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400",tag:""},{name:"Lâmpada RGB",preco:"5.500 Kz",valor:5500,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400",tag:""},{name:"Microfone Lapela",preco:"14.000 Kz",valor:14000,img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400",tag:"NOVO"}];
-const cupomPadrao=[{codigo:"OG10",tipo:"percent",valor:10,min:0},{codigo:"OG20",tipo:"percent",valor:20,min:30000},{codigo:"FRETE",tipo:"frete",valor:0,min:0}];
-function entrar(){if(document.getElementById('senha').value===SENHA_SECRETA){document.getElementById('login').style.display='none';document.getElementById('painel').style.display='block';carregar();carregarCupom()}else alert('Senha errada')}
-let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;let cupons=JSON.parse(localStorage.getItem('og_cupons')||'null')||cupomPadrao;
-function aba(t){document.getElementById('abaProd').style.display=t=='prod'?'block':'none';document.getElementById('abaCupom').style.display=t=='cupom'?'block':'none';document.getElementById('tabProd').classList.toggle('ativo',t=='prod');document.getElementById('tabCupom').classList.toggle('ativo',t=='cupom')}
-function lerFoto(input){if(input.files&&input.files[0]){let r=new FileReader();r.onload=e=>{document.getElementById('img').value=e.target.result;document.getElementById('preview').src=e.target.result;document.getElementById('preview').style.display='block'};r.readAsDataURL(input.files[0])}}
-function salvar(){localStorage.setItem('og_produtos',JSON.stringify(produtos));carregar()}
-function carregar(){document.getElementById('qtd').innerText=produtos.length;document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;border-bottom:1px solid #eee;padding-bottom:8px"><img src="${p.img}" style="width:50px;height:50px;object-fit:cover;border-radius:8px"><div style="flex:1"><b style="font-size:12px">${p.name}</b><br>${p.preco}</div><button class="btn-del" onclick="del(${i})">X</button></div>`).join('')}
-function add(){let n=document.getElementById('nome').value,p=document.getElementById('preco').value,v=parseInt(document.getElementById('valor').value)||0,i=document.getElementById('img').value;if(!n||!p||!i||!v)return alert('Preencha tudo');produtos.unshift({name:n,preco:p,valor:v,img:i,tag:''});document.getElementById('nome').value=document.getElementById('preco').value=document.getElementById('valor').value=document.getElementById('img').value='';document.getElementById('preview').style.display='none';salvar()}
-function del(i){if(confirm('Apagar?')){produtos.splice(i,1);salvar()}}
-function salvarCupom(){localStorage.setItem('og_cupons',JSON.stringify(cupons));carregarCupom()}
-function carregarCupom(){document.getElementById('qtdCupom').innerText=cupons.length;document.getElementById('listaCupom').innerHTML=cupons.map((c,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:8px 0"><div><b>${c.codigo}</b><br><span style="font-size:11px">${c.tipo=='percent'?c.valor+'% OFF':c.tipo=='valor'?c.valor+' Kz OFF':'Frete Grátis'} ${c.min>0?'(Min '+c.min+' Kz)':''}</span></div><button class="btn-del" onclick="delCupom(${i})">X</button></div>`).join('')}
-function addCupom(){let cod=document.getElementById('cupomCodigo').value.trim().toUpperCase();let tipo=document.getElementById('cupomTipo').value;let val=parseInt(document.getElementById('cupomValor').value)||0;let min=parseInt(document.getElementById('cupomMin').value)||0;if(!cod)return alert('Digite código');if(cupons.find(c=>c.codigo==cod))return alert('Já existe');cupons.push({codigo:cod,tipo,valor:val,min});document.getElementById('cupomCodigo').value=document.getElementById('cupomValor').value=document.getElementById('cupomMin').value='';salvarCupom()}
-function delCupom(i){if(confirm('Apagar cupom?')){cupons.splice(i,1);salvarCupom()}}
+let prod=JSON.parse(localStorage.getItem('og_produtos')||'[]');
+document.getElementById('area').innerHTML=prod.length+' produtos salvos<br><br><a href="https://lucas-32127.github.io/og-vendas/">Voltar</a>';
 </script></body></html>
