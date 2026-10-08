@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - OG VENDAS</title>
+<style>body{font-family:Arial;background:#f0f2f5;padding:15px} .box{background:#fff;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:15px} input{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px} button{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:8px} .btn-add{background:#0a2540;color:#fff} .btn-del{background:#ff3b30;color:#fff;padding:6px} .login{max-width:400px;margin:50px auto}</style>
+</head><body>
+<div id="login" class="box login"><h2>Admin OG VENDAS</h2><p>Digite a senha:</p><input id="senha" type="password" placeholder="Senha"><button class="btn-add" onclick="entrar()">ENTRAR</button><p style="font-size:12px;margin-top:10px">Dica: senha é OG123</p></div>
+<div id="painel" style="display:none">
+<div class="box"><h2>Adicionar Produto</h2><input id="nome" placeholder="Nome do produto ex: iPhone 13"><input id="preco" placeholder="Preço ex: 350.000 Kz"><input id="img" placeholder="Link da imagem (cole URL da foto)"><button class="btn-add" onclick="add()">+ ADICIONAR PRODUTO NA LOJA</button></div>
+<div class="box"><h3>Produtos na loja (<span id="qtd"></span>)</h3><div id="lista"></div><button style="background:#25D366;color:white" onclick="location.href='index.html'">VER LOJA</button></div>
+</div>
+<script>
+const padrao=[
+{name:"Smartwatch T900",preco:"15.000 Kz",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
+{name:"Fone Bluetooth",preco:"8.500 Kz",img:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400"},
+{name:"Power Bank 20.000mAh",preco:"12.000 Kz",img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},
+{name:"Coluna JBL Mini",preco:"9.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"}
+];
+function entrar(){if(document.getElementById('senha').value==='OG123'){document.getElementById('login').style.display='none';document.getElementById('painel').style.display='block';carregar()}else alert('Senha errada! É OG123')}
+let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
+function salvar(){localStorage.setItem('og_produtos',JSON.stringify(produtos));carregar()}
+function carregar(){document.getElementById('qtd').innerText=produtos.length;document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;border-bottom:1px solid #eee;padding-bottom:8px"><img src="${p.img}" style="width:50px;height:50px;object-fit:cover;border-radius:8px"><div style="flex:1"><b>${p.name}</b><br>${p.preco}</div><button class="btn-del" onclick="del(${i})">X</button></div>`).join('')}
+function add(){let n=nome.value,p=preco.value,i=img.value;if(!n||!p||!i)return alert('Preencha tudo');produtos.unshift({name:n,preco:p,img:i});nome.value=preco.value=img.value='';salvar();alert('Produto adicionado!')}
+function del(i){if(confirm('Apagar?')){produtos.splice(i,1);salvar()}}
+</script></body></html>
