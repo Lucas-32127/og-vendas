@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OG VENDAS - Loja Oficial</title>
+<title>OG VENDAS - Loja Oficial Angola</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial;background:#f0f2f5}
 header{background:#0a2540;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:10}
-header span{color:#ffcc00}.top{background:#ffcc00;text-align:center;font-weight:bold;padding:7px;font-size:13px}
-.banner{background:#0a2540;color:#fff;padding:30px 15px;text-align:center}
+header span{color:#ffcc00}.top{background:#ffcc00;text-align:center;font-weight:bold;padding:7px;font-size:12px}
+.banner{background:#0a2540;color:#fff;padding:28px 15px;text-align:center}
 .btn-zap{background:#25D366;color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;display:inline-block;font-weight:bold;margin-top:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
 .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1)}
 .card img{width:100%;height:140px;object-fit:cover}.info{padding:10px}
-.preco{color:#0a2540;font-weight:bold;font-size:16px;margin:5px 0}
-.btn-comprar{width:100%;background:#0a2540;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:bold}
-.admin-link{position:fixed;bottom:10px;right:10px;background:#000;color:#fff;padding:6px 10px;border-radius:20px;font-size:10px;text-decoration:none;opacity:0.5}
+.preco{color:#0a2540;font-weight:bold;font-size:15px;margin:5px 0}
+.btn-comprar{width:100%;background:#0a2540;color:#fff;border:none;padding:9px;border-radius:8px;font-weight:bold;font-size:13px}
+.rodape{background:#0a2540;color:white;text-align:center;padding:20px;margin-top:20px;font-size:12px}
+.tag{background:red;color:white;font-size:9px;padding:2px 6px;border-radius:4px;position:absolute;margin:6px}
 </style>
 </head>
 <body>
 <header><h1>OG <span>VENDAS</span></h1><p>Entrega em Luanda - 950 978 388</p></header>
 <div class="top">🚚 ENTREGA RÁPIDA EM LUANDA | PAGAMENTO NA ENTREGA</div>
-<div class="banner"><h2>Tudo que você precisa com preço de Angola</h2><p>Peça no WhatsApp e receba hoje</p><a class="btn-zap" href="https://wa.me/244950978388">📲 COMPRAR NO WHATSAPP</a></div>
-<div id="produtos" class="grid"></div>
-<a href="admin.html" class="admin-link">ADMIN</a>
-<script>
-const padrao=[
-{name:"Smartwatch T900",preco:"15.000 Kz",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
-{name:"Fone Bluetooth",preco:"8.500 Kz",img:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400"},
-{name:"Power Bank 20.000mAh",preco:"12.000 Kz",img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},
-{name:"Coluna JBL Mini",preco:"9.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"}
-];
-let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
-function render(){
-document.getElementById('produtos').innerHTML=produtos.map(p=>`
-<div class="card"><img src="${p.img}"><div class="info"><h3>${p.name}</h3><div class="preco">${p.preco}</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20${encodeURIComponent(p.name)}')">COMPRAR</button></div></div>`).join('');
-}
-render();
-</script>
+<div class="banner"><h2>Os mais vendidos de Angola</h2><p>Preço baixo e entrega hoje</p><a class="btn-zap" href="https://wa.me/244950978388?text=Ola%20OG%20VENDAS%20quero%20comprar">📲 COMPRAR NO WHATSAPP</a></div>
+<div class="grid">
+
+<div class="card"><span class="tag">MAIS VENDIDO</span><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"><div class="info"><h3 style="font-size:13px">Smartwatch T900 Ultra</h3><div class="preco">15.000 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Smartwatch%20T900')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"><div class="info"><h3 style="font-size:13px">Fone Bluetooth M10</h3><div class="preco">8.500 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Fone%20M10')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"><div class="info"><h3 style="font-size:13px">Power Bank 20.000mAh</h3><div class="preco">12.000 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Power%20Bank')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"><div class="info"><h3 style="font-size:13px">Coluna JBL Mini Go3</h3><div class="preco">9.500 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20JBL')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400"><div class="info"><h3 style="font-size:13px">TV Box 4K Android</h3><div class="preco">22.000 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20TV%20Box')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400"><div class="info"><h3 style="font-size:13px">Tripé + Luz Ring Light</h3><div class="preco">13.500 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Ring%20Light')">COMPRAR</button></div></div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"><div class="info"><h3 style="font-size:13px">Lâmpada LED RGB + Controle</h3><div class="preco">5.500 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Lampada%20RGB')">COMPRAR</button></div></div>
+
+<div class="card"><span class="tag">NOVO</span><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400"><div class="info"><h3 style="font-size:13px">Microfone Lapela Sem Fio</h3><div class="preco">14.000 Kz</div><button class="btn-comprar" onclick="window.open('https://wa.me/244950978388?text=Quero%20Microfone')">COMPRAR</button></div></div>
+
+</div>
+<div class="rodape">OG VENDAS ONLINE<br>📍 Luanda - Angola<br>📲 WhatsApp: 950 978 388<br>Pagamento na Entrega</div>
 </body>
 </html>
