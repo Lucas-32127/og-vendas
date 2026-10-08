@@ -1,23 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - OG VENDAS</title>
-<style>body{font-family:Arial;background:#f0f2f5;padding:15px} .box{background:#fff;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:15px} input{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px} button{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:8px} .btn-add{background:#0a2540;color:#fff} .btn-del{background:#ff3b30;color:#fff;padding:6px} .login{max-width:400px;margin:50px auto}</style>
+<style>
+body{font-family:Arial;background:#f0f2f5;padding:12px}
+.box{background:#fff;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin-bottom:15px}
+input{width:100%;padding:11px;margin:6px 0;border:1px solid #ccc;border-radius:8px;font-size:14px}
+button{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer}
+.btn-add{background:#0a2540;color:#fff}
+.btn-galeria{background:#ffcc00;color:#000;border:2px dashed #0a2540}
+.btn-del{background:#ff3b30;color:#fff;padding:6px;width:auto}
+.login{max-width:400px;margin:40px auto;text-align:center}
+#preview{width:100%;max-height:200px;object-fit:contain;margin-top:8px;border-radius:8px;display:none}
+.icon-admin{font-size:22px}
+</style>
 </head><body>
-<div id="login" class="box login"><h2>Admin OG VENDAS</h2><p>Digite a senha:</p><input id="senha" type="password" placeholder="Senha"><button class="btn-add" onclick="entrar()">ENTRAR</button><p style="font-size:12px;margin-top:10px">Dica: senha é OG123</p></div>
+<div id="login" class="box login"><h2>🔐 Admin OG VENDAS</h2><p>Digite a senha:</p><input id="senha" type="password" placeholder="Senha"><button class="btn-add" onclick="entrar()">ENTRAR</button><p style="font-size:12px;margin-top:10px">Senha: OG123</p></div>
+
 <div id="painel" style="display:none">
-<div class="box"><h2>Adicionar Produto</h2><input id="nome" placeholder="Nome do produto ex: iPhone 13"><input id="preco" placeholder="Preço ex: 350.000 Kz"><input id="img" placeholder="Link da imagem (cole URL da foto)"><button class="btn-add" onclick="add()">+ ADICIONAR PRODUTO NA LOJA</button></div>
-<div class="box"><h3>Produtos na loja (<span id="qtd"></span>)</h3><div id="lista"></div><button style="background:#25D366;color:white" onclick="location.href='index.html'">VER LOJA</button></div>
+<div class="box">
+<h2>📦 Adicionar Produto</h2>
+<input id="nome" placeholder="Nome ex: Relógio Smart">
+<input id="preco" placeholder="Preço ex: 15.000 Kz">
+
+<!-- BOTÃO NOVO DE GALERIA -->
+<button class="btn-galeria" onclick="document.getElementById('fotoInput').click()">📸 CLICAR AQUI PARA ESCOLHER FOTO DA GALERIA</button>
+<input type="file" id="fotoInput" accept="image/*" style="display:none" onchange="lerFoto(this)">
+<img id="preview">
+<input id="img" type="hidden">
+
+<button class="btn-add" onclick="add()">✅ ADICIONAR NA LOJA AGORA</button>
 </div>
+
+<div class="box"><h3>Produtos na loja (<span id="qtd"></span>)</h3><div id="lista"></div>
+<br>
+<button style="background:#25D366;color:white" onclick="location.href='index.html'">👁️ VER MINHA LOJA</button>
+<button style="background:#000;color:white" onclick="limpar()">🗑️ Limpar tudo e voltar ao padrão</button>
+</div>
+</div>
+
 <script>
 const padrao=[
-{name:"Smartwatch T900",preco:"15.000 Kz",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
-{name:"Fone Bluetooth",preco:"8.500 Kz",img:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400"},
+{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
+{name:"Fone Bluetooth M10",preco:"8.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},
 {name:"Power Bank 20.000mAh",preco:"12.000 Kz",img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},
-{name:"Coluna JBL Mini",preco:"9.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"}
+{name:"Coluna JBL Mini Go3",preco:"9.500 Kz",img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},
+{name:"TV Box 4K Android",preco:"22.000 Kz",img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400"},
+{name:"Tripé + Luz Ring Light",preco:"13.500 Kz",img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400"},
+{name:"Lâmpada LED RGB",preco:"5.500 Kz",img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"},
+{name:"Microfone Lapela",preco:"14.000 Kz",img:"https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400"}
 ];
+
 function entrar(){if(document.getElementById('senha').value==='OG123'){document.getElementById('login').style.display='none';document.getElementById('painel').style.display='block';carregar()}else alert('Senha errada! É OG123')}
+
 let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
+
+function lerFoto(input){
+  if(input.files && input.files[0]){
+    let reader=new FileReader();
+    reader.onload=function(e){
+      document.getElementById('img').value=e.target.result;
+      let prev=document.getElementById('preview');
+      prev.src=e.target.result;
+      prev.style.display='block';
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
 function salvar(){localStorage.setItem('og_produtos',JSON.stringify(produtos));carregar()}
-function carregar(){document.getElementById('qtd').innerText=produtos.length;document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;border-bottom:1px solid #eee;padding-bottom:8px"><img src="${p.img}" style="width:50px;height:50px;object-fit:cover;border-radius:8px"><div style="flex:1"><b>${p.name}</b><br>${p.preco}</div><button class="btn-del" onclick="del(${i})">X</button></div>`).join('')}
-function add(){let n=nome.value,p=preco.value,i=img.value;if(!n||!p||!i)return alert('Preencha tudo');produtos.unshift({name:n,preco:p,img:i});nome.value=preco.value=img.value='';salvar();alert('Produto adicionado!')}
-function del(i){if(confirm('Apagar?')){produtos.splice(i,1);salvar()}}
+function carregar(){
+  document.getElementById('qtd').innerText=produtos.length;
+  document.getElementById('lista').innerHTML=produtos.map((p,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;border-bottom:1px solid #eee;padding-bottom:8px"><img src="${p.img}" style="width:55px;height:55px;object-fit:cover;border-radius:8px"><div style="flex:1"><b style="font-size:13px">${p.name}</b><br>${p.preco}</div><button class="btn-del" onclick="del(${i})">X</button></div>`).join('')
+}
+function add(){
+  let n=document.getElementById('nome').value;
+  let p=document.getElementById('preco').value;
+  let i=document.getElementById('img').value;
+  if(!n||!p||!i) return alert('⚠️ Preencha nome, preço e escolha a foto da galeria!');
+  produtos.unshift({name:n,preco:p,img:i});
+  document.getElementById('nome').value='';
+  document.getElementById('preco').value='';
+  document.getElementById('img').value='';
+  document.getElementById('preview').style.display='none';
+  salvar();
+  alert('✅ Produto adicionado com sucesso!');
+}
+function del(i){if(confirm('Apagar este produto?')){produtos.splice(i,1);salvar()}}
+function limpar(){if(confirm('Voltar aos 8 produtos padrão?')){localStorage.removeItem('og_produtos');produtos=[...padrao];salvar()}}
+carregar();
 </script></body></html>
