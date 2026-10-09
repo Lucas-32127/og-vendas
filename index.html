@@ -13,7 +13,9 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 .og{color:#FFFFFF!important;font-size:42px;font-weight:900;line-height:1;letter-spacing:1px}
 .vendas{color:#FFCC00!important;font-size:42px;font-weight:900;line-height:1;letter-spacing:1px}
 .telefone{color:#a8b3c5;font-size:12px;font-weight:700;margin-top:4px}
-#carrinhoBtn{background:linear-gradient(#ffde59,#ffcc00);color:#0a2540;border:none;padding:12px 18px;border-radius:30px;font-weight:900;font-size:14px;position:relative;box-shadow:0 4px 15px rgba(255,204,0,.4)}
+.header-actions{display:flex;gap:8px;align-items:center}
+#toolsBtn{background:#111;color:#fff;border:none;padding:12px 14px;border-radius:30px;font-weight:900;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.2)}
+#carrinhoBtn{background:linear-gradient(#ffde59,#ffcc00);color:#0a2540;border:none;padding:12px 18px;border-radius:30px;font-weight:900;font-size:14px;position:relative;box-shadow:0 4px 15px rgba(255,204,0,.4);cursor:pointer}
 #qtdCarrinho{position:absolute;top:-8px;right:-6px;background:#ff3b30;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;border:2px solid #fff}
 .top-faixa{background:linear-gradient(90deg,#ffcc00,#ffde59);color:#0a2540;text-align:center;font-weight:900;padding:10px;font-size:12px}
 .banner-hero{background:radial-gradient(ellipse at top,#12315f,#0a2540);color:#fff;padding:28px 16px;text-align:center}
@@ -23,16 +25,20 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px;padding-bottom:90px}
 .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.04)}
 .card img{width:100%;height:155px;object-fit:cover;background:#f8f9fb}
-.info{padding:12px 10px 10px}.info h3{font-size:13px;font-weight:800;min-height:36px}.preco{font-weight:900;font-size:15px;margin:8px 0}.btn-add{width:100%;background:#0a2540;color:#fff;border:none;padding:11px;border-radius:12px;font-weight:900;font-size:12px}
+.info{padding:12px 10px 10px}.info h3{font-size:13px;font-weight:800;min-height:36px}.preco{font-weight:900;font-size:15px;margin:8px 0}.btn-add{width:100%;background:#0a2540;color:#fff;border:none;padding:11px;border-radius:12px;font-weight:900;font-size:12px;cursor:pointer}
 .btn-admin{position:fixed;bottom:18px;left:14px;background:#0a2540;color:#ffcc00;padding:9px 16px;border-radius:30px;font-size:11px;font-weight:900;text-decoration:none;border:1px solid #ffcc00;z-index:90;box-shadow:0 4px 15px rgba(0,0,0,.3)}
-#carrinhoModal{position:fixed;inset:0;background:rgba(6,26,47,.65);backdrop-filter:blur(4px);z-index:999;display:none}
-#carrinhoBox{background:#fff;width:94%;max-width:400px;max-height:90vh;overflow:auto;margin:2% auto;border-radius:20px;padding:18px}
+#carrinhoModal,#toolsModal{position:fixed;inset:0;background:rgba(6,26,47,.65);backdrop-filter:blur(4px);z-index:999;display:none}
+#carrinhoBox,.toolsBox{background:#fff;width:94%;max-width:440px;max-height:90vh;overflow:auto;margin:2% auto;border-radius:20px;padding:18px}
 .itemCart{display:flex;gap:10px;align-items:center;border-bottom:1px solid #eef2f7;padding:12px 0}.itemCart img{width:56px;height:56px;border-radius:12px;object-fit:cover}
-.qtdBtn{border:1px solid #d0d7e3;background:#fff;padding:4px 10px;border-radius:8px;font-weight:800}
-.btn-final{background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff;width:100%;padding:15px;border:none;border-radius:14px;font-weight:900;margin-top:14px;font-size:15px}
+.qtdBtn{border:1px solid #d0d7e3;background:#fff;padding:4px 10px;border-radius:8px;font-weight:800;cursor:pointer}
+.btn-final{background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff;width:100%;padding:15px;border:none;border-radius:14px;font-weight:900;margin-top:14px;font-size:15px;cursor:pointer}
 .cupomBox{background:#fffbe6;border:2px dashed #ffcc00;padding:12px;border-radius:14px;margin:12px 0}
 .cupomBox input{width:68%;padding:10px;border:1px solid #d0d7e3;border-radius:10px;font-weight:700}
-.cupomBox button{width:30%;padding:10px;background:#0a2540;color:#fff;border:none;border-radius:10px;font-weight:900}
+.cupomBox button{width:30%;padding:10px;background:#0a2540;color:#fff;border:none;border-radius:10px;font-weight:900;cursor:pointer}
+.input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #d0d7e3;background:#fff;margin:6px 0;outline:none;font-weight:600}
+.btn-black{width:100%;background:#0a2540;color:#fff;padding:12px;border-radius:12px;border:none;font-weight:900;margin-top:8px;cursor:pointer}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0}.tabs button{white-space:nowrap;padding:8px 14px;border-radius:100px;border:1px solid #ddd;background:#fff;font-weight:800;font-size:11px;cursor:pointer}.tabs button.on{background:#0a2540;color:#ffcc00;border-color:#0a2540}
+.ferr{background:#f4f6f9;border-radius:16px;padding:14px;margin:10px 0}
 </style>
 </head>
 <body>
@@ -41,12 +47,30 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 <div class="logo-linha"><span class="og">OG</span><span class="vendas">VENDAS</span></div>
 <div class="telefone">📞 950 978 388 • LUANDA</div>
 </div>
+<div class="header-actions">
+<button id="toolsBtn" onclick="openTools()">🛠️</button>
 <button id="carrinhoBtn" onclick="abrirCarrinho()">🛒 <span id="qtdCarrinho">0</span></button>
+</div>
 </header>
 <div class="top-faixa">🎉 CARRINHO LIBERADO - ADICIONA 5 OU + PRODUTOS E FINALIZA NO ZAP!</div>
 <div class="banner-hero"><h2>OG VENDAS - ENTREGA EM LUANDA</h2><p id="cuponsTxt">Cupons: FRETE</p><br><a class="btn-ver-carrinho" href="#" onclick="abrirCarrinho();return false">🛒 VER CARRINHO</a></div>
 <div id="produtos" class="grid"></div>
+
+<!-- CARRINHO -->
 <div id="carrinhoModal" onclick="if(event.target==this)fecharCarrinho()"><div id="carrinhoBox"><h3 style="font-weight:900">🛒 Meu Carrinho</h3><div id="listaCarrinho" style="margin:14px 0"></div><div class="cupomBox"><b style="font-size:12px">🎟️ TEM CUPOM?</b><div style="display:flex;gap:6px;margin-top:8px"><input id="cupomInput" placeholder="OG10"><button onclick="aplicarCupom()">OK</button></div><p id="cupomMsg" style="font-size:11px;margin-top:6px;font-weight:700"></p></div><div style="border-top:2px solid #0a2540;padding-top:12px"><p>Subtotal: <b id="subtotal">0 Kz</b></p><p style="color:#1ebe5b">Desconto: - <b id="desconto">0 Kz</b></p><p style="font-size:18px;margin-top:6px">Total: <b id="totalFinal">0 Kz</b></p><p style="font-size:11px;color:#667085"><span id="totalItens">0</span> itens • <span id="freteTxt"></span></p><button class="btn-final" onclick="finalizar()">✅ FINALIZAR NO WHATSAPP</button><button style="width:100%;padding:12px;margin-top:10px;border:1px solid #d0d7e3;background:#fff;border-radius:12px;font-weight:700" onclick="fecharCarrinho()">Continuar comprando</button></div></div></div>
+
+<!-- FERRAMENTAS - AS QUE VOCÊ CIRCULOU -->
+<div id="toolsModal" onclick="if(event.target==this)closeTools()"><div class="toolsBox">
+<div style="display:flex;justify-content:space-between;align-items:center"><b>🛠️ FERRAMENTAS OG</b><button onclick="closeTools()" style="background:#0a2540;color:#fff;border:none;padding:6px 12px;border-radius:100px;font-weight:900">✕</button></div>
+<div class="tabs"><button class="on" onclick="abaTool(1)">Link</button><button onclick="abaTool(2)">Lucro</button><button onclick="abaTool(3)">Frete</button><button onclick="abaTool(4)">Cupom</button><button onclick="abaTool(5)">Etiqueta</button><button onclick="abaTool(6)">QR</button></div>
+<div id="t1"><div class="ferr"><b>🔗 Link WhatsApp</b><input class="input" id="msgLink" placeholder="Mensagem: Olá quero comprar..."><button class="btn-black" onclick="gerarLink()">Gerar Link</button><p id="rLink" style="font-size:11px;word-break:break-all;margin-top:8px"></p></div></div>
+<div id="t2" style="display:none"><div class="ferr"><b>💰 Calculadora Lucro</b><input class="input" id="custo" type="number" placeholder="Custo"><input class="input" id="venda" type="number" placeholder="Venda"><button class="btn-black" onclick="calcLucro()">Calcular Lucro</button><p id="rLucro" style="margin-top:8px;font-weight:900"></p></div></div>
+<div id="t3" style="display:none"><div class="ferr"><b>🚚 Frete Luanda</b><select class="input" id="mun"><option value="1000">Centro - 1000Kz</option><option value="1500">Cazenga - 1500Kz</option><option value="2000">Viana - 2000Kz</option><option value="2500">Zango - 2500Kz</option></select><input class="input" id="pProd" type="number" placeholder="Preço produto"><button class="btn-black" onclick="calcFrete()">Calcular Total</button><p id="rFrete" style="margin-top:8px;font-weight:900"></p></div></div>
+<div id="t4" style="display:none"><div class="ferr"><b>🏷️ Gerador Cupom</b><input class="input" id="cNome" placeholder="Nome ex: OG10"><input class="input" id="cDesc" type="number" placeholder="% desconto"><button class="btn-black" onclick="gerarCupom()">Criar Cupom</button><p id="rCupom" style="margin-top:8px"></p></div></div>
+<div id="t5" style="display:none"><div class="ferr"><b>📦 Etiqueta Entrega</b><input class="input" id="eNome" placeholder="Cliente"><input class="input" id="eTel" placeholder="Telefone"><input class="input" id="eEnd" placeholder="Endereço"><input class="input" id="eProd" placeholder="Produto"><button class="btn-black" onclick="gerarEti()">Gerar Etiqueta</button><div id="rEti" style="background:#fff;border:1px dashed #0a2540;padding:12px;border-radius:12px;margin-top:10px;display:none"></div></div></div>
+<div id="t6" style="display:none"><div class="ferr"><b>📱 QR Code Loja</b><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://lucas-32127.github.io/Lucas-Tech/" style="width:100%;max-width:230px;display:block;margin:12px auto;border-radius:16px"><p style="text-align:center;font-size:11px;word-break:break-all">https://lucas-32127.github.io/Lucas-Tech/</p><a href="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=https://lucas-32127.github.io/Lucas-Tech/" target="_blank" class="btn-black" style="display:block;text-align:center;text-decoration:none">Baixar QR Alta</a></div></div>
+</div></div>
+
 <a href="admin.html" class="btn-admin">⚙️ ADMIN</a>
 <script>
 const padrao=[{name:"Timberland",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400"},{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"},{name:"Coluna JBL Mini",preco:"9.500 Kz",valor:9500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"TV Box 4K",preco:"22.000 Kz",valor:22000,img:"https://images.unsplash.com/photo-1593359677879-a4bb92f367d8?w=400"},{name:"Ring Light Tripé",preco:"13.500 Kz",valor:13500,img:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400"},{name:"Lâmpada RGB",preco:"5.500 Kz",valor:5500,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"}];
@@ -55,18 +79,31 @@ let produtos=JSON.parse(localStorage.getItem('og_produtos')||'null')||padrao;
 let carrinho=JSON.parse(localStorage.getItem('og_carrinho')||'[]');
 let cupons=JSON.parse(localStorage.getItem('og_cupons')||'null')||cupomPadrao;
 let descontoValor=0,cupomAtivo='',freteGratis=false;
+const ZAP="244950978388";
+
 function render(){document.getElementById('produtos').innerHTML=produtos.map((p,i)=>`<div class="card"><img src="${p.img}"><div class="info"><h3>${p.name}</h3><div class="preco">${p.preco}</div><button id="btn${i}" class="btn-add" onclick="addCarrinho(${i})">+ CARRINHO</button></div></div>`).join('');document.getElementById('cuponsTxt').innerText='Cupons: '+cupons.map(c=>c.codigo).join(' • ');atualizaQtd();}
 function addCarrinho(i){let prod=produtos[i];let ex=carrinho.find(c=>c.name==prod.name);if(ex){ex.qtd++}else{carrinho.push({...prod,qtd:1})}salvar();let btn=document.getElementById('btn'+i);btn.innerText='✅ ADICIONADO';setTimeout(()=>btn.innerText='+ CARRINHO',900);}
 function salvar(){localStorage.setItem('og_carrinho',JSON.stringify(carrinho));atualizaQtd();calcTotal();}
 function atualizaQtd(){let t=carrinho.reduce((s,c)=>s+c.qtd,0);document.getElementById('qtdCarrinho').innerText=t;document.getElementById('totalItens').innerText=t;}
 function abrirCarrinho(){renderCarrinho();calcTotal();document.getElementById('carrinhoModal').style.display='block';}
 function fecharCarrinho(){document.getElementById('carrinhoModal').style.display='none'}
-function renderCarrinho(){if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px">Vazio - adiciona 5 produtos!</p>';return}document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>`<div class="itemCart"><img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br><span style="font-size:12px;font-weight:800">${c.preco}</span></div><div><button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button> ${c.qtd} <button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button> <button style="border:none;background:none;color:red;font-weight:900" onclick="remove(${i})">✕</button></div></div>`).join('');}
+function renderCarrinho(){if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px">Vazio - adiciona produtos!</p>';return}document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>`<div class="itemCart"><img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br><span style="font-size:12px;font-weight:800">${c.preco}</span></div><div><button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button> ${c.qtd} <button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button> <button style="border:none;background:none;color:red;font-weight:900" onclick="remove(${i})">✕</button></div></div>`).join('');}
 function mudaQtd(i,d){carrinho[i].qtd+=d;if(carrinho[i].qtd<=0)carrinho.splice(i,1);salvar();renderCarrinho();}
 function remove(i){carrinho.splice(i,1);salvar();renderCarrinho();}
-function calcTotal(){let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;if(total<0)total=0;document.getElementById('subtotal').innerText=sub.toLocaleString()+' Kz';document.getElementById('desconto').innerText=descontoValor.toLocaleString()+' Kz';document.getElementById('totalFinal').innerText=total.toLocaleString()+' Kz';document.getElementById('freteTxt').innerText=freteGratis?'Frete Grátis':'Frete 2.000 Kz';}
+function calcTotal(){let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;if(total<0)total=0;document.getElementById('subtotal').innerText=sub.toLocaleString()+' Kz';document.getElementById('desconto').innerText=descontoValor.toLocaleString()+' Kz';document.getElementById('totalFinal').innerText=total.toLocaleString()+' Kz';document.getElementById('freteTxt').innerText=freteGratis?'Frete Grátis':'Frete a calcular';}
 function aplicarCupom(){let cup=document.getElementById('cupomInput').value.trim().toUpperCase();let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let achado=cupons.find(c=>c.codigo==cup);let msg=document.getElementById('cupomMsg');descontoValor=0;freteGratis=false;cupomAtivo='';if(!achado){msg.innerText='❌ Inválido';msg.style.color='red';calcTotal();return}if(sub<(achado.min||0)){msg.innerText='Mínimo '+achado.min+' Kz';msg.style.color='red';calcTotal();return}if(achado.tipo=='percent'){descontoValor=Math.round(sub*achado.valor/100);cupomAtivo=achado.codigo;msg.innerText='✅ '+achado.valor+'% OFF';msg.style.color='green';}else if(achado.tipo=='valor'){descontoValor=achado.valor;cupomAtivo=achado.codigo;msg.innerText='✅ -'+achado.valor+' Kz';msg.style.color='green';}else{freteGratis=true;cupomAtivo=achado.codigo;msg.innerText='✅ Frete Grátis';msg.style.color='green';}calcTotal();}
-function finalizar(){if(carrinho.length==0)return alert('Vazio');let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;let txt='Olá OG VENDAS! Pedido:\n\n';carrinho.forEach(c=>{txt+=c.qtd+'x '+c.name+' - '+c.preco+'\n'});txt+='\nSubtotal: '+sub+' Kz\n';if(cupomAtivo)txt+='Cupom '+cupomAtivo+': -'+descontoValor+' Kz\n';txt+='TOTAL: '+total+' Kz\nItens: '+carrinho.reduce((s,c)=>s+c.qtd,0);window.open('https://wa.me/244950978388?text='+encodeURIComponent(txt));}
+function finalizar(){if(carrinho.length==0)return alert('Vazio');let sub=carrinho.reduce((s,c)=>s+(c.valor||0)*c.qtd,0);let total=sub-descontoValor;let txt='Olá OG VENDAS! Pedido:\n\n';carrinho.forEach(c=>{txt+=c.qtd+'x '+c.name+' - '+c.preco+'\n'});txt+='\nSubtotal: '+sub+' Kz\n';if(cupomAtivo)txt+='Cupom '+cupomAtivo+': -'+descontoValor+' Kz\n';txt+='TOTAL: '+total+' Kz\nItens: '+carrinho.reduce((s,c)=>s+c.qtd,0)+'\nEnd:?\nTel:?';window.open('https://wa.me/'+ZAP+'?text='+encodeURIComponent(txt));}
+
+// FERRAMENTAS
+function openTools(){document.getElementById('toolsModal').style.display='block';}
+function closeTools(){document.getElementById('toolsModal').style.display='none';}
+function abaTool(n){for(let i=1;i<=6;i++)document.getElementById('t'+i).style.display='none';document.getElementById('t'+n).style.display='block';document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',i+1===n));}
+function gerarLink(){let m=document.getElementById('msgLink').value||'Olá OG VENDAS! Quero comprar';let link=`https://wa.me/${ZAP}?text=${encodeURIComponent(m)}`;document.getElementById('rLink').innerHTML=`<a href="${link}" target="_blank" style="color:#0a2540;font-weight:800">${link}</a><br><br><button class="btn-black" onclick="navigator.clipboard.writeText('${link}')">Copiar</button>`;}
+function calcLucro(){let c=+document.getElementById('custo').value||0,v=+document.getElementById('venda').value||0;document.getElementById('rLucro').innerHTML=`Lucro: <b style="color:green">${v-c} Kz (${v?(((v-c)/v)*100).toFixed(1):0}%)</b>`;}
+function calcFrete(){let frete=parseInt(document.getElementById('mun').value)||0;let prod=+document.getElementById('pProd').value||0;document.getElementById('rFrete').innerHTML=`Total: <b>${prod+frete} Kz</b> (produto + frete)`;}
+function gerarCupom(){let n=document.getElementById('cNome').value||'OG10',d=document.getElementById('cDesc').value||10;let novo={codigo:n.toUpperCase(),tipo:"percent",valor:parseInt(d),min:0};cupons.push(novo);localStorage.setItem('og_cupons',JSON.stringify(cupons));document.getElementById('rCupom').innerHTML=`✅ Cupom <b>${n.toUpperCase()}</b> - ${d}% OFF criado!`;render();}
+function gerarEti(){let n=document.getElementById('eNome').value,t=document.getElementById('eTel').value,e=document.getElementById('eEnd').value,p=document.getElementById('eProd').value;let d=document.getElementById('rEti');d.style.display='block';d.innerHTML=`<b>OG VENDAS - 950 978 388</b><br>Cliente: ${n}<br>Tel:${t}<br>End:${e}<br>Prod:${p}<br><b>PAGAMENTO NA ENTREGA</b>`;}
+
 render();calcTotal();
 </script>
 </body>
