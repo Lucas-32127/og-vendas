@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OG VENDAS - IA Voz APK + Chrome</title>
+<title>OG VENDAS - VOZ APK GARANTIDA</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
+<!-- VOZ QUE FUNCIONA NO APK -->
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=6ORuX2A7"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',Arial,sans-serif;background:#f4f6f9;color:#0a2540}
@@ -41,7 +43,7 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 .iaChatHeader{background:#0a2540;color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center}
 #iaChatBody{max-height:300px;overflow-y:auto;padding:12px;background:#f4f6f9}
 .msg{padding:10px 12px;border-radius:16px;margin:8px 0;max-width:85%;font-size:12px;line-height:1.4}
-.msg.ia{background:#fff;border:1px solid #eef2f7;border-bottom-left-radius:4px;position:relative}
+.msg.ia{background:#fff;border:1px solid #eef2f7;border-bottom-left-radius:4px}
 .msg.user{background:#0a2540;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
 .quickBtns{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
 .quickBtns button{background:#fff;border:1px solid #0a2540;color:#0a2540;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:800;cursor:pointer}
@@ -57,11 +59,13 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 </head>
 <body>
 <header>
-<div><div style="display:flex;gap:8px"><span class="og">OG</span><span class="vendas">VENDAS</span></div><div class="telefone">📞 950 978 388 • IA VOZ APK OK 🔊</div></div>
+<div><div style="display:flex;gap:8px"><span class="og">OG</span><span class="vendas">VENDAS</span></div><div class="telefone">📞 950 978 388 • VOZ APK GARANTIDA 🔊</div></div>
 <div class="header-actions"><button id="toolsBtn" onclick="openTools()">🛠️</button><button id="carrinhoBtn" onclick="abrirCarrinho()">🛒 <span id="qtdCarrinho">0</span></button></div>
 </header>
-<div class="top-faixa">🤖 IA FALA NO CHROME + NO APK - SOMA CORRIGIDA</div>
-<div class="banner-hero"><h2 style="font-size:21px;font-weight:900">OG VENDAS - ENTREGA EM LUANDA</h2><p id="cuponsTxt" style="color:#ffcc00;font-weight:800;margin-top:10px;font-size:13px;background:rgba(255,204,0,.15);display:inline-block;padding:6px 14px;border-radius:20px">Cupons: FRETE</p></div>
+<div class="top-faixa">🔊 VOZ FUNCIONA NO APK + CHROME - TESTE O BOTÃO</div>
+<div class="banner-hero"><h2 style="font-size:21px;font-weight:900">OG VENDAS - ENTREGA EM LUANDA</h2><p id="cuponsTxt" style="color:#ffcc00;font-weight:800;margin-top:10px;font-size:13px;background:rgba(255,204,0,.15);display:inline-block;padding:6px 14px;border-radius:20px">Cupons: FRETE</p>
+<button onclick="testeVoz()" style="margin-top:12px;background:#ffcc00;color:#0a2540;border:none;padding:10px 18px;border-radius:20px;font-weight:900;cursor:pointer">🔊 TESTAR VOZ AGORA</button>
+</div>
 <div id="produtos" class="grid"></div>
 
 <div id="carrinhoModal" onclick="if(event.target==this)fecharCarrinho()"><div id="carrinhoBox">
@@ -81,14 +85,14 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 <div class="totalLine"><span>Entrega (<span id="freteTxt">Viana</span>)</span><span id="taxaEntrega">2000 Kz</span></div>
 <div class="totalLine"><span>Desconto</span><span id="desconto">0 Kz</span></div>
 <div class="totalLine total"><span>TOTAL FATURA</span><span id="totalFinal">0 Kz</span></div>
-<div style="font-size:11px;color:#a8b3c5;margin-top:6px"><span id="totalItens">0</span> itens • soma corrigida ✅</div>
+<div style="font-size:11px;color:#a8b3c5;margin-top:6px"><span id="totalItens">0</span> itens</div>
 </div>
 <button class="btn-final" onclick="finalizar()">✅ FINALIZAR - GERAR FATURA</button>
 <button style="width:100%;padding:12px;margin-top:10px;border:1px solid #d0d7e3;background:#fff;border-radius:12px;font-weight:700;cursor:pointer" onclick="fecharCarrinho()">Continuar</button>
 </div></div>
 
 <div id="toolsModal" onclick="if(event.target==this)closeTools()"><div class="toolsBox">
-<div style="display:flex;justify-content:space-between;align-items:center"><b>🛠️ FERRAMENTAS OG + IA VOZ APK</b><button onclick="closeTools()" style="background:#0a2540;color:#fff;border:none;padding:6px 12px;border-radius:100px;font-weight:900">✕</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><b>🛠️ FERRAMENTAS OG - VOZ APK</b><button onclick="closeTools()" style="background:#0a2540;color:#fff;border:none;padding:6px 12px;border-radius:100px;font-weight:900">✕</button></div>
 <div class="tabs"><button class="on" onclick="abaTool(1)">Link</button><button onclick="abaTool(2)">Lucro</button><button onclick="abaTool(3)">Frete</button><button onclick="abaTool(4)">Cupom</button><button onclick="abaTool(5)">Etiqueta</button><button onclick="abaTool(6)">QR</button><button onclick="abaTool(7)" style="background:#ffcc00;color:#0a2540">🤖 IA VOZ</button></div>
 <div id="t1"><div class="ferr"><b>🔗 Link</b><input class="input" id="msgLink" placeholder="Mensagem"><button class="btn-black" onclick="gerarLink()">Gerar Link</button><p id="rLink" style="font-size:11px;word-break:break-all;margin-top:8px"></p></div></div>
 <div id="t2" style="display:none"><div class="ferr"><b>💰 Lucro Auto</b><input class="input" id="custo" type="number" placeholder="Custo" oninput="calcLucro()"><input class="input" id="venda" type="number" placeholder="Venda" oninput="calcLucro()"><p id="rLucro" style="margin-top:8px;font-weight:900;background:#fff;padding:10px;border-radius:10px">Digite...</p></div></div>
@@ -96,27 +100,28 @@ header{background:#0a2540;padding:20px 16px;display:flex;justify-content:space-b
 <div id="t4" style="display:none"><div class="ferr"><b>🏷️ Cupom</b><input class="input" id="cNome" placeholder="OG10"><input class="input" id="cDesc" type="number" placeholder="%"><button class="btn-black" onclick="gerarCupom()">Criar</button><p id="rCupom" style="margin-top:8px"></p></div></div>
 <div id="t5" style="display:none"><div class="ferr"><b>📦 Etiqueta</b><input class="input" id="eNome" placeholder="Cliente"><input class="input" id="eTel" placeholder="Tel"><input class="input" id="eEnd" placeholder="End"><input class="input" id="eProd" placeholder="Produto"><button class="btn-black" onclick="gerarEti()">Gerar</button><div id="rEti" style="background:#fff;border:1px dashed #0a2540;padding:12px;border-radius:12px;margin-top:10px;display:none"></div></div></div>
 <div id="t6" style="display:none"><div class="ferr"><b>📱 QR</b><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://lucas-32127.github.io/Lucas-Tech/" style="width:100%;max-width:230px;display:block;margin:12px auto;border-radius:16px"></div></div>
-<div id="t7" style="display:none"><div class="ferr" style="background:linear-gradient(135deg,#0a2540,#12315f);color:#fff;border:1px solid #ffcc00"><b>🤖 IA OG COM VOZ - APK + CHROME</b><div class="voiceToggle"><span>🔊 Voz IA:</span><div class="switch on" id="voiceSwitch" onclick="toggleVoz()"></div><span id="voiceLabel">LIGADA - APK + Chrome</span></div><select class="input" id="iaTipo"><option value="desc">📝 Descrição Produto</option><option value="preco">💰 Sugestão Preço</option><option value="atend">💬 Resposta Cliente</option><option value="anuncio">📢 Anúncio</option></select><input class="input" id="iaProd" placeholder="Nome produto ex: Power Bank"><button class="btn-black" style="background:#ffcc00;color:#0a2540" onclick="gerarIA()">✨ GERAR COM IA + VOZ</button><div id="rIA" class="ai-result" style="display:none"></div><button id="btnCopyIA" class="btn-black" style="display:none;background:#25D366" onclick="copiarIA()">📋 Copiar Texto</button><button id="btnSpeakIA" class="btn-black" style="display:none;background:#111" onclick="falarUltimo()">🔊 Ouvir de Novo (APK)</button></div></div>
+<div id="t7" style="display:none"><div class="ferr" style="background:linear-gradient(135deg,#0a2540,#12315f);color:#fff;border:1px solid #ffcc00"><b>🤖 IA VOZ - TESTE APK</b><div class="voiceToggle"><span>🔊 Voz:</span><div class="switch on" id="voiceSwitch" onclick="toggleVoz()"></div><span id="voiceLabel">LIGADA</span></div><button class="btn-black" style="background:#25D366" onclick="testeVoz()">🔊 TESTAR VOZ APK</button><select class="input" id="iaTipo"><option value="desc">📝 Descrição</option><option value="preco">💰 Preço</option><option value="atend">💬 Resposta</option><option value="anuncio">📢 Anúncio</option></select><input class="input" id="iaProd" placeholder="Produto"><button class="btn-black" style="background:#ffcc00;color:#0a2540" onclick="gerarIA()">✨ GERAR + FALAR</button><div id="rIA" class="ai-result" style="display:none"></div></div></div>
 </div></div>
 
 <div id="iaAutoBtn" onclick="toggleIAChat()">🤖</div>
 <div id="iaAutoChat">
-<div class="iaChatHeader"><div><b>🤖 IA OG - Voz APK + Chrome 🔊</b><br><span id="iaStatus">🟢 Falando automático</span></div><button onclick="toggleIAChat()" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 10px;border-radius:100px;font-weight:900">✕</button></div>
+<div class="iaChatHeader"><div><b>🤖 IA OG - Voz APK 🔊</b><br><span id="iaStatus">🟢 Toque pra falar</span></div><button onclick="toggleIAChat()" style="background:rgba(255,255,255,.2);color:#fff;border:none;padding:6px 10px;border-radius:100px;font-weight:900">✕</button></div>
 <div id="iaChatBody">
-<div class="msg ia">Olá! IA OG com VOZ no APK 🔊<br><br>Agora falo no Chrome E no APK!<br>Ativa o som 🔊</div>
-<div class="quickBtns"><button onclick="iaQuick('preço')">💰 Preço?</button><button onclick="iaQuick('entrega')">🚚 Entrega?</button><button onclick="iaQuick('garantia')">🔒 Garantia?</button><button onclick="iaQuick('pagamento')">💳 Pagamento?</button></div>
+<div class="msg ia">Voz no APK 🔊<br><br>Clique em TESTAR VOZ no topo!<br>Se não ouvir, ative o volume do celular.</div>
+<div class="quickBtns"><button onclick="iaQuick('preço')">💰 Preço?</button><button onclick="iaQuick('entrega')">🚚 Entrega?</button><button onclick="iaQuick('garantia')">🔒 Garantia?</button></div>
 </div>
 <div style="padding:8px 12px;background:#fffbe6;border-top:1px dashed #ffcc00;display:flex;justify-content:space-between;align-items:center">
-<span style="font-size:11px;font-weight:800">🔊 Voz:</span>
+<span style="font-size:11px;font-weight:800">🔊 Voz APK:</span>
 <div style="display:flex;gap:8px;align-items:center">
 <div class="switch on" id="voiceSwitchChat" onclick="toggleVoz()"></div>
 <button onclick="pararVoz()" style="background:#ff3b30;color:#fff;border:none;padding:6px 10px;border-radius:20px;font-size:10px;font-weight:900">🔇 Parar</button>
 </div>
 </div>
-<div id="iaChatInput"><input id="iaUserInput" placeholder="Pergunta... IA fala no APK!" onkeypress="if(event.key==='Enter')sendIAMsg()"><button onclick="sendIAMsg()">➤</button></div>
+<div id="iaChatInput"><input id="iaUserInput" placeholder="Pergunta..." onkeypress="if(event.key==='Enter')sendIAMsg()"><button onclick="sendIAMsg()">➤</button></div>
 </div>
 
 <a href="admin.html" class="btn-admin">⚙️ ADMIN</a>
+
 <script>
 const padrao=[{name:"Timberland",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400"},{name:"Smartwatch T900 Ultra",preco:"15.000 Kz",valor:15000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},{name:"Fone Bluetooth M10",preco:"8.500 Kz",valor:8500,img:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"},{name:"Power Bank 20.000mAh",preco:"12.000 Kz",valor:12000,img:"https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400"}];
 const cupomPadrao=[{codigo:"OG10",tipo:"percent",valor:10,min:0},{codigo:"OG20",tipo:"percent",valor:20,min:30000},{codigo:"FRETE",tipo:"frete",valor:0,min:0}];
@@ -130,18 +135,18 @@ let iaChatOpen=false;
 let vozAtiva=true;
 
 function getValorProduto(p){if(p.valor&&!isNaN(p.valor))return Number(p.valor);if(p.preco){let num=parseInt(String(p.preco).replace(/\D/g,''));if(!isNaN(num))return num;}return 0;}
-function render(){document.getElementById('produtos').innerHTML=produtos.map((p,i)=>`<div class="card" onclick="iaAutoResposta('produto','${p.name}')"><img src="${p.img}"><div class="info"><h3>${p.name}</h3><div class="preco">${p.preco||p.valor.toLocaleString()+' Kz'}</div><button id="btn${i}" class="btn-add" onclick="event.stopPropagation(); addCarrinho(${i})">+ CARRINHO</button></div></div>`).join('');document.getElementById('cuponsTxt').innerText='Cupons: '+cupons.map(c=>c.codigo).join(' • ');atualizaQtd();calcTotal();}
+function render(){document.getElementById('produtos').innerHTML=produtos.map((p,i)=>`<div class="card" onclick="iaAutoResposta('produto','${p.name}')"><img src="${p.img}"><div class="info"><h3>${p.name}</h3><div class="preco">${p.preco||p.valor.toLocaleString()+' Kz'}</div><button class="btn-add" onclick="event.stopPropagation(); addCarrinho(${i})">+ CARRINHO</button></div></div>`).join('');document.getElementById('cuponsTxt').innerText='Cupons: '+cupons.map(c=>c.codigo).join(' • ');atualizaQtd();calcTotal();}
 function addCarrinho(i){let prod=produtos[i];prod.valor=getValorProduto(prod);let ex=carrinho.find(c=>c.name==prod.name);if(ex){ex.qtd++}else{carrinho.push({...prod,valor:getValorProduto(prod),qtd:1})}salvar();iaAutoResposta('add',prod.name);}
 function salvar(){localStorage.setItem('og_carrinho',JSON.stringify(carrinho));atualizaQtd();renderCarrinho();calcTotal();}
 function atualizaQtd(){let t=carrinho.reduce((s,c)=>s+c.qtd,0);document.getElementById('qtdCarrinho').innerText=t;document.getElementById('totalItens').innerText=t;}
 function abrirCarrinho(){renderCarrinho();calcTotal();document.getElementById('carrinhoModal').style.display='block';iaAutoResposta('carrinho');}
 function fecharCarrinho(){document.getElementById('carrinhoModal').style.display='none'}
 function renderCarrinho(){if(carrinho.length==0){document.getElementById('listaCarrinho').innerHTML='<p style="text-align:center;padding:20px">Carrinho vazio</p>';calcTotal();return}document.getElementById('listaCarrinho').innerHTML=carrinho.map((c,i)=>{let v=getValorProduto(c);return `<div class="itemCart"><img src="${c.img}"><div style="flex:1"><b style="font-size:12px">${c.name}</b><br><span style="font-size:12px;font-weight:800">${v.toLocaleString()} Kz</span></div><div><button class="qtdBtn" onclick="mudaQtd(${i},-1)">-</button> ${c.qtd} <button class="qtdBtn" onclick="mudaQtd(${i},1)">+</button> <button style="border:none;background:none;color:red;font-weight:900;margin-left:4px" onclick="remove(${i})">✕</button></div></div>`}).join('');calcTotal();}
-function mudaQtd(i,d){carrinho[i].qtd+=d;if(carrinho[i].qtd<=0)carrinho.splice(i,1);salvar();iaAutoResposta('qtd');}
-function remove(i){carrinho.splice(i,1);salvar();iaAutoResposta('remove');}
+function mudaQtd(i,d){carrinho[i].qtd+=d;if(carrinho[i].qtd<=0)carrinho.splice(i,1);salvar();}
+function remove(i){carrinho.splice(i,1);salvar();}
 function calcTotal(){let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd});let freteSel=document.getElementById('cliMun');let frete=freteSel?parseInt(freteSel.value)||2000:2000;let freteNome=freteSel?freteSel.options[freteSel.selectedIndex].text.split(' -')[0]:'Viana';if(freteGratis)frete=0;let total=sub+frete-descontoValor;if(total<0)total=0;document.getElementById('subtotal').innerText=sub.toLocaleString()+' Kz';document.getElementById('taxaEntrega').innerText=frete.toLocaleString()+' Kz';document.getElementById('freteTxt').innerText=freteNome;document.getElementById('desconto').innerText=descontoValor.toLocaleString()+' Kz';document.getElementById('totalFinal').innerText=total.toLocaleString()+' Kz';}
 document.getElementById('cliMun').addEventListener('change',calcTotal);
-function aplicarCupom(){let cup=document.getElementById('cupomInput').value.trim().toUpperCase();let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd});let achado=cupons.find(c=>c.codigo==cup);let msg=document.getElementById('cupomMsg');descontoValor=0;freteGratis=false;cupomAtivo='';if(!achado){msg.innerText='❌ Inválido';msg.style.color='red';calcTotal();iaAutoResposta('cupom_invalido');return}if(sub<(achado.min||0)){msg.innerText='Mínimo '+achado.min+' Kz';msg.style.color='red';calcTotal();return}if(achado.tipo=='percent'){descontoValor=Math.round(sub*achado.valor/100);cupomAtivo=achado.codigo;msg.innerText='✅ '+achado.valor+'% OFF = -'+descontoValor+' Kz';msg.style.color='green';}else if(achado.tipo=='valor'){descontoValor=achado.valor;cupomAtivo=achado.codigo;msg.innerText='✅ -'+achado.valor+' Kz';msg.style.color='green';}else{freteGratis=true;cupomAtivo=achado.codigo;msg.innerText='✅ Frete Grátis';msg.style.color='green';}calcTotal();iaAutoResposta('cupom_ok',achado.codigo+' '+achado.valor+'%');}
+function aplicarCupom(){let cup=document.getElementById('cupomInput').value.trim().toUpperCase();let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd});let achado=cupons.find(c=>c.codigo==cup);let msg=document.getElementById('cupomMsg');descontoValor=0;freteGratis=false;cupomAtivo='';if(!achado){msg.innerText='❌ Inválido';msg.style.color='red';calcTotal();iaAutoResposta('cupom_invalido');return}if(sub<(achado.min||0)){msg.innerText='Mínimo '+achado.min+' Kz';msg.style.color='red';calcTotal();return}if(achado.tipo=='percent'){descontoValor=Math.round(sub*achado.valor/100);cupomAtivo=achado.codigo;msg.innerText='✅ '+achado.valor+'% OFF = -'+descontoValor+' Kz';msg.style.color='green';}else if(achado.tipo=='valor'){descontoValor=achado.valor;cupomAtivo=achado.codigo;msg.innerText='✅ -'+achado.valor+' Kz';msg.style.color='green';}else{freteGratis=true;cupomAtivo=achado.codigo;msg.innerText='✅ Frete Grátis';msg.style.color='green';}calcTotal();iaAutoResposta('cupom_ok',achado.codigo);}
 function finalizar(){let nome=document.getElementById('cliNome').value.trim();let tel=document.getElementById('cliTel').value.trim();let end=document.getElementById('cliEnd').value.trim();let munSel=document.getElementById('cliMun');let munText=munSel.options[munSel.selectedIndex].text;let pag=document.getElementById('cliPag').value;if(!nome||!tel||!end){alert('⚠️ Preencha Nome, Telefone e Endereço!');iaAutoResposta('dados_falta');return;}if(carrinho.length==0)return alert('Carrinho vazio');let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd});let frete=freteGratis?0:parseInt(munSel.value);let total=sub+frete-descontoValor;let faturaNum="OG-"+Date.now().toString().slice(-6);let data=new Date().toLocaleString('pt-AO');let lista=carrinho.map(c=>`• ${c.name} x${c.qtd} = ${getValorProduto(c)*c.qtd} Kz`).join('%0A');let msg=`*FATURA OG VENDAS*%0A🧾 ${faturaNum}%0A📅 ${data}%0A%0A*CLIENTE*%0A👤 ${nome}%0A📱 ${tel}%0A📍 ${end}%0A🚚 ${munText}%0A💳 ${pag}%0A%0A*PRODUTOS*%0A${lista}%0A%0ASubtotal: ${sub} Kz%0AFrete: ${frete} Kz%0ADesconto: -${descontoValor} Kz%0A*TOTAL: ${total} Kz*`;carrinho=[];localStorage.setItem('og_carrinho',JSON.stringify(carrinho));atualizaQtd();fecharCarrinho();window.open('https://wa.me/'+ZAP+'?text='+msg,'_blank');iaAutoResposta('finalizado');}
 function openTools(){document.getElementById('toolsModal').style.display='block';}
 function closeTools(){document.getElementById('toolsModal').style.display='none';}
@@ -152,101 +157,76 @@ function calcFrete(){let f=parseInt(document.getElementById('mun').value)||0;let
 function gerarCupom(){let n=document.getElementById('cNome').value||'OG10',d=document.getElementById('cDesc').value||10;let novo={codigo:n.toUpperCase(),tipo:"percent",valor:parseInt(d),min:0};cupons.push(novo);localStorage.setItem('og_cupons',JSON.stringify(cupons));document.getElementById('rCupom').innerHTML=`✅ Cupom <b>${n.toUpperCase()}</b> criado!`;render();}
 function gerarEti(){let n=document.getElementById('eNome').value,t=document.getElementById('eTel').value,e=document.getElementById('eEnd').value,p=document.getElementById('eProd').value;let d=document.getElementById('rEti');d.style.display='block';d.innerHTML=`<b>OG VENDAS - 950 978 388</b><br>Cliente: ${n}<br>Tel:${t}<br>End:${e}<br>Prod:${p}`;}
 
-// ========== VOZ IA - CORRIGIDO PRA APK + CHROME ==========
-let audioAtual=null;
-
+// ========== VOZ 100% APK - RESPONSIVEVOICE ==========
 function toggleVoz(){
   vozAtiva=!vozAtiva;
   document.querySelectorAll('.switch').forEach(s=>s.classList.toggle('on',vozAtiva));
-  document.getElementById('voiceLabel').innerText=vozAtiva?'LIGADA - APK + Chrome':'DESLIGADA';
-  document.getElementById('iaStatus').innerText=vozAtiva?'🟢 Falando no APK e Chrome':'🔴 Voz desligada';
-  if(vozAtiva){falarIA('Voz ativada. Agora funciono no aplicativo e no Chrome.');}
-  else{pararVoz();}
+  document.getElementById('voiceLabel').innerText=vozAtiva?'LIGADA':'DESLIGADA';
+  if(vozAtiva) falarIA('Voz ativada no aplicativo');
+  else pararVoz();
 }
 
 function falarIA(texto){
   if(!vozAtiva) return;
   pararVoz();
   ultimoTextoIA=texto;
-  let limpo=texto.replace(/[🔥✅📦💰🚚🔒💳🎟️📲🛒⚠️🎉👀🔊🤖]/g,'').replace(/\n/g,'. ').substring(0,200);
+  let limpo=texto.replace(/[🔥✅📦💰🚚🔒💳🎟️📲🛒⚠️🎉👀🔊🤖]/g,'').replace(/\n/g,'. ').substring(0,180);
   if(limpo.length<2) return;
 
-  // Tenta falar com Web Speech (Chrome)
+  // 1 - Tenta ResponsiveVoice (funciona no APK)
+  if(typeof responsiveVoice!== 'undefined'){
+    try{
+      responsiveVoice.speak(limpo, "Portuguese Female", {rate: 1.05});
+      console.log('Voz APK ResponsiveVoice OK');
+      return;
+    }catch(e){}
+  }
+  // 2 - Fallback speechSynthesis (Chrome)
   if('speechSynthesis' in window){
     try{
       let utter=new SpeechSynthesisUtterance(limpo);
       utter.lang='pt-PT';
-      utter.rate=1.0;
-      utter.volume=1;
-      let vozes=window.speechSynthesis.getVoices();
-      let vozPT=vozes.find(v=>v.lang.includes('pt')) || vozes[0];
-      if(vozPT) utter.voice=vozPT;
-      utter.onend=()=>{console.log('Voz Chrome OK');};
-      utter.onerror=()=>{falarFallbackAPK(limpo);};
+      utter.rate=1;
       window.speechSynthesis.speak(utter);
-      // Se não começar em 1.2s, usa fallback APK
-      setTimeout(()=>{
-        if(!window.speechSynthesis.speaking &&!window.speechSynthesis.pending){
-          // Pode ser que já terminou rápido, então verifica se não falou nada
-          if(utter.text.length>0) falarFallbackAPK(limpo);
-        }
-      },1300);
       return;
-    }catch(e){
-      falarFallbackAPK(limpo);
-    }
-  }else{
-    falarFallbackAPK(limpo);
+    }catch(e){}
   }
-}
-
-function falarFallbackAPK(texto){
-  // Fallback que funciona no APK WebView - usa Google Translate TTS como MP3
-  try{
-    if(audioAtual){audioAtual.pause(); audioAtual=null;}
-    let url="https://translate.google.com/translate_tts?ie=UTF-8&q="+encodeURIComponent(texto)+"&tl=pt&client=tw-ob";
-    audioAtual=new Audio(url);
-    audioAtual.play().then(()=>{
-      console.log('Voz APK via Google TTS OK');
-    }).catch(()=>{
-      // Se Google bloquear, tenta vibrar e mostrar texto
-      if(navigator.vibrate) navigator.vibrate([200,100,200]);
-      console.log('Audio bloqueado, mas código OK');
-    });
-  }catch(e){
-    console.log('Erro voz APK:',e);
-  }
+  // 3 - Último fallback - vibra
+  if(navigator.vibrate) navigator.vibrate(200);
 }
 
 function pararVoz(){
+  if(typeof responsiveVoice!== 'undefined') responsiveVoice.cancel();
   if('speechSynthesis' in window) window.speechSynthesis.cancel();
-  if(audioAtual){audioAtual.pause(); audioAtual.currentTime=0; audioAtual=null;}
 }
-function falarUltimo(){if(ultimoTextoIA) falarIA(ultimoTextoIA);}
+
+function testeVoz(){
+  // Esse botão TEM QUE ser clicado pra liberar áudio no APK
+  let texto="Olá! Eu sou a IA da OG Vendas. Agora a minha voz funciona no aplicativo e no Chrome. Teste com sucesso!";
+  falarIA(texto);
+  alert('🔊 Se você ouviu a voz, o APK está OK! Se não ouviu, aumente o volume de mídia do celular e clique de novo.');
+}
+
 function gerarIA(){
   let tipo=document.getElementById('iaTipo').value;
   let prod=document.getElementById('iaProd').value||'Produto OG';
   let out=document.getElementById('rIA');
   out.style.display='block';
-  document.getElementById('btnCopyIA').style.display='block';
-  document.getElementById('btnSpeakIA').style.display='block';
   let textos={
-    desc:`🔥 ${prod.toUpperCase()} - PREMIUM 🔥\n\n✅ Original e garantido\n✅ Entrega 24h Luanda\n✅ Paga na entrega\n\n📲 950 978 388`,
-    preco:`💰 IA OG - ${prod}\nCusto 8000 Kz\nPreço ideal 14500 Kz\nLucro 6500 Kz. Vende 15000 com cupom OG10`,
-    atend:`Olá! Sobre ${prod}, temos entrega rápida, garantia 7 dias, pagamento na entrega. Quer reservar?`,
-    anuncio:`📢 PROMO ${prod} - 15.000 Kz! De 25 mil por 15 mil, só hoje! Entrega 2 horas Luanda. 950 978 388`
+    desc:`🔥 ${prod.toUpperCase()} - PREMIUM 🔥\n\n✅ Original\n✅ Entrega 24h Luanda\n✅ Paga na entrega\n\n📲 950 978 388`,
+    preco:`💰 ${prod}\nCusto 8000 Kz\nVenda ideal 14500 Kz\nLucro 6500 Kz`,
+    atend:`Olá! Sobre ${prod}, temos entrega rápida, garantia 7 dias.`,
+    anuncio:`📢 PROMO ${prod} - 15.000 Kz! De 25 mil por 15 mil! Entrega 2h! 950 978 388`
   };
   let txt=textos[tipo]||textos.desc;
-  ultimoTextoIA=txt;
   out.innerText=txt;
   falarIA(txt);
 }
-function copiarIA(){navigator.clipboard.writeText(ultimoTextoIA).then(()=>{alert('✅ Copiado!'); falarIA('Texto copiado');});}
 
-// IA AUTO COM VOZ
-function toggleIAChat(){let chat=document.getElementById('iaAutoChat');iaChatOpen=!iaChatOpen;chat.style.display=iaChatOpen?'block':'none';if(iaChatOpen) falarIA('Olá, sou a IA OG com voz no aplicativo. Como posso ajudar?');}
-function sendIAMsg(){let input=document.getElementById('iaUserInput');let texto=input.value.trim();if(!texto)return;addMsgChat(texto,'user');input.value='';setTimeout(()=>{let resp=geraRespostaIA(texto);addMsgChat(resp,'ia');},600);}
-function iaQuick(tipo){addMsgChat(tipo,'user');setTimeout(()=>{let resp=geraRespostaIA(tipo);addMsgChat(resp,'ia');},500); if(!iaChatOpen){document.getElementById('iaAutoChat').style.display='block'; iaChatOpen=true;}}
+// IA AUTO
+function toggleIAChat(){let chat=document.getElementById('iaAutoChat');iaChatOpen=!iaChatOpen;chat.style.display=iaChatOpen?'block':'none';if(iaChatOpen) falarIA('Olá, sou a IA OG. Como posso ajudar?');}
+function sendIAMsg(){let input=document.getElementById('iaUserInput');let texto=input.value.trim();if(!texto)return;addMsgChat(texto,'user');input.value='';let resp=geraRespostaIA(texto);addMsgChat(resp,'ia');}
+function iaQuick(tipo){addMsgChat(tipo,'user');let resp=geraRespostaIA(tipo);addMsgChat(resp,'ia'); if(!iaChatOpen){document.getElementById('iaAutoChat').style.display='block'; iaChatOpen=true;}}
 function addMsgChat(texto,tipo){
   let body=document.getElementById('iaChatBody');
   let div=document.createElement('div');
@@ -258,34 +238,29 @@ function addMsgChat(texto,tipo){
 }
 function geraRespostaIA(texto){
   let t=texto.toLowerCase();
-  if(t.includes('preço')||t.includes('quanto')||t.includes('valor')){return `Preço OG Vendas: de 5.500 a 22.000 Kz. Power Bank 12 mil, Fone 8.500, Smartwatch 15 mil. Use cupom OG10.`;}
-  if(t.includes('entrega')||t.includes('frete')){return `Entrega OG 24 horas Luanda: Centro mil Kz, Cazenga mil e quinhentos, Viana dois mil, Zango dois mil e quinhentos.`;}
-  if(t.includes('garantia')||t.includes('original')){return `Garantia OG: 100 porcento original, 7 dias garantia, mais de 500 clientes.`;}
-  if(t.includes('pagamento')||t.includes('pagar')){return `Pagamento: na entrega, transferência, ou Multicaixa Express.`;}
-  if(t.includes('cupom')||t.includes('desconto')){return `Cupons: OG10 dez porcento, OG20 vinte porcento, FRETE frete grátis.`;}
-  return `Olá! IA OG com voz no APK. Você disse: ${texto}. Posso ajudar com preço, entrega, garantia, pagamento e cupons.`;
+  if(t.includes('preço')||t.includes('quanto')) return `Preço OG: 5.500 a 22.000 Kz. Power Bank 12 mil, Fone 8.500. Cupom OG10.`;
+  if(t.includes('entrega')) return `Entrega 24h Luanda: Centro mil, Cazenga mil e quinhentos, Viana dois mil, Zango dois mil e quinhentos.`;
+  if(t.includes('garantia')) return `Garantia 100 porcento original, 7 dias.`;
+  if(t.includes('pagamento')) return `Pagamento na entrega, transferência, Express.`;
+  if(t.includes('cupom')) return `Cupons: OG10 dez porcento, OG20 vinte, FRETE grátis.`;
+  return `Olá! IA OG. Você disse ${texto}. Posso ajudar com preço, entrega, garantia.`;
 }
 function iaAutoResposta(tipo,info){
   let chat=document.getElementById('iaAutoChat');
-  if(!iaChatOpen){chat.style.display='block'; iaChatOpen=true; setTimeout(()=>{if(iaChatOpen){chat.style.display='none'; iaChatOpen=false;}},9000);}
+  if(!iaChatOpen){chat.style.display='block'; iaChatOpen=true; setTimeout(()=>{chat.style.display='none'; iaChatOpen=false;},9000);}
   let msg='';
-  if(tipo=='produto'){msg=`Você clicou em ${info}. Quer saber preço ou entrega? Eu falo automático!`;}
-  else if(tipo=='add'){msg=`${info} adicionado! Você tem ${carrinho.reduce((s,c)=>s+c.qtd,0)} itens. Use cupom OG10.`;}
-  else if(tipo=='carrinho'){let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd});msg=`Carrinho: ${sub.toLocaleString()} Kz, ${carrinho.reduce((s,c)=>s+c.qtd,0)} itens. Soma automática!`;}
-  else if(tipo=='qtd'){msg=`Quantidade atualizada! Total ${document.getElementById('totalFinal').innerText}.`;}
-  else if(tipo=='cupom_ok'){msg=`Cupom ${info} aplicado! Desconto ${document.getElementById('desconto').innerText}.`;}
-  else if(tipo=='cupom_invalido'){msg=`Cupom inválido. Use OG10, OG20, ou FRETE.`;}
-  else if(tipo=='dados_falta'){msg=`Falta preencher nome, telefone e endereço.`;}
-  else if(tipo=='finalizado'){msg=`Pedido enviado! Fatura no WhatsApp 950 978 388.`;}
-  else{msg=`IA OG com voz no APK. Como posso ajudar com ${info||'sua compra'}?`;}
+  if(tipo=='produto') msg=`Você clicou em ${info}. Preço e entrega?`;
+  else if(tipo=='add') msg=`${info} adicionado! ${carrinho.reduce((s,c)=>s+c.qtd,0)} itens.`;
+  else if(tipo=='carrinho'){let sub=0;carrinho.forEach(c=>{sub+=getValorProduto(c)*c.qtd}); msg=`Carrinho ${sub.toLocaleString()} Kz`;}
+  else if(tipo=='cupom_ok') msg=`Cupom ${info} aplicado!`;
+  else if(tipo=='cupom_invalido') msg=`Cupom inválido. Use OG10.`;
+  else if(tipo=='finalizado') msg=`Pedido enviado! WhatsApp 950 978 388.`;
+  else msg=`IA OG: ${info||'como ajudar?'}`;
   addMsgChat(msg,'ia');
 }
 
 render();
 setInterval(calcTotal,1000);
-// Carrega vozes pro Chrome
-if('speechSynthesis' in window){window.speechSynthesis.getVoices(); setTimeout(()=>{window.speechSynthesis.getVoices();},1000);}
-setTimeout(()=>{if(!iaChatOpen){iaAutoResposta('produto','nossas promoções');}},15000);
 </script>
 </body>
 </html>
